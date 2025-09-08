@@ -24,7 +24,7 @@ const App = () => (
           <SkipToContent />
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/Invonest' : ''}>
             <main id="main-content" role="main">
               <Routes>
                 <Route path="/" element={<Index />} />
