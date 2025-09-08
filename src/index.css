@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
+/* Rabar_042 Font for Arabic and Kurdish */
+@font-face {
+  font-family: 'Rabar_042';
+  src: url('/KURDISH-FONTS/Rabar_042/Rabar_042.eot');
+  src: url('/KURDISH-FONTS/Rabar_042/Rabar_042.eot?#iefix') format('embedded-opentype'),
+       url('/KURDISH-FONTS/Rabar_042/Rabar_042.woff') format('woff'),
+       url('/KURDISH-FONTS/Rabar_042/Rabar_042.ttf') format('truetype'),
+       url('/KURDISH-FONTS/Rabar_042/Rabar_042.svg#Rabar_042') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium Invoice Generator Design System
+All colors MUST be HSL for perfect theme switching.
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Enhanced Design Palette */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+    
+    /* Premium Brand Accent - Sophisticated Blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 83% 48%;
+    
+    /* Secondary Brand - Elegant Purple */
+    --secondary-brand: 271 76% 53%;
+    --secondary-brand-foreground: 0 0% 100%;
+    
+    /* Accent Colors - Design System */
+    --accent-emerald: 158 64% 52%;
+    --accent-amber: 43 96% 56%;
+    --accent-rose: 351 95% 71%;
+    --accent-cyan: 188 94% 55%;
+    
+    /* Cards & Surfaces - Premium Glass */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+    --card-border: 220 13% 91%;
+    --card-glass: 0 0% 100% / 0.8;
+    
+    /* Forms & Inputs - Enhanced */
+    --input: 220 13% 96%;
+    --input-foreground: 220 13% 18%;
+    --input-focus: 221 83% 53%;
+    --border: 220 13% 91%;
+    --ring: 221 83% 53%;
+    
+    /* Secondary Elements - Rich Grays */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 18%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    
+    /* Status Colors - Vibrant & Clear */
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 100%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 220 13% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --info: 188 94% 55%;
+    --info-foreground: 0 0% 100%;
+    
+    /* Invoice Specific - Professional Theme */
+    --invoice-header: 221 83% 53%;
+    --invoice-accent: 221 83% 97%;
+    --table-header: 220 14% 96%;
+    --table-border: 220 13% 91%;
+    --total-highlight: 271 76% 53%;
+    
+    /* Enhanced Gradients - Multi-color */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(271 76% 53%));
+    --gradient-header: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 83% 58%));
+    --gradient-accent: linear-gradient(180deg, hsl(221 83% 98%), hsl(221 83% 95%));
+    --gradient-success: linear-gradient(135deg, hsl(158 64% 52%), hsl(158 64% 47%));
+    --gradient-warning: linear-gradient(135deg, hsl(43 96% 56%), hsl(43 96% 51%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    
+    /* Enhanced Shadows - Colorful Depth */
+    --shadow-soft: 0 1px 3px 0 hsl(221 83% 53% / 0.1), 0 1px 2px -1px hsl(221 83% 53% / 0.1);
+    --shadow-medium: 0 4px 6px -1px hsl(221 83% 53% / 0.1), 0 2px 4px -2px hsl(221 83% 53% / 0.1);
+    --shadow-large: 0 10px 15px -3px hsl(221 83% 53% / 0.15), 0 4px 6px -4px hsl(221 83% 53% / 0.1);
+    --shadow-colored: 0 8px 32px hsl(221 83% 53% / 0.15);
+    --shadow-purple: 0 8px 32px hsl(271 76% 53% / 0.15);
+    --shadow-emerald: 0 8px 32px hsl(158 64% 52% / 0.15);
+    
+    /* Shadows */
+    --shadow-soft: 0 1px 3px 0 hsl(220 13% 18% / 0.1), 0 1px 2px -1px hsl(220 13% 18% / 0.1);
+    --shadow-medium: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -2px hsl(220 13% 18% / 0.1);
+    --shadow-large: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -4px hsl(220 13% 18% / 0.1);
+    
+    /* Typography */
+    --font-arabic: 'Rabar_042', 'Noto Sans Arabic', 'Noto Naskh Arabic', sans-serif;
+    --font-latin: 'Inter', system-ui, sans-serif;
+    
+    /* Layout */
+    --radius: 8px;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+    
+    --primary: 221 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 83% 63%;
+    
+    --secondary-brand: 271 76% 58%;
+    --secondary-brand-foreground: 0 0% 100%;
+    
+    --accent-emerald: 158 64% 57%;
+    --accent-amber: 43 96% 61%;
+    --accent-rose: 351 95% 76%;
+    --accent-cyan: 188 94% 60%;
+    
+    --card: 222 84% 5%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217 33% 18%;
+    --card-glass: 222 84% 5% / 0.8;
+    
+    --input: 217 33% 18%;
+    --input-foreground: 210 40% 98%;
+    --input-focus: 221 83% 58%;
+    --border: 217 33% 18%;
+    --ring: 221 83% 58%;
+    
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    
+    --success: 158 64% 57%;
+    --success-foreground: 0 0% 100%;
+    --warning: 43 96% 61%;
+    --warning-foreground: 222 84% 5%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --info: 188 94% 60%;
+    --info-foreground: 0 0% 100%;
+    
+    --invoice-header: 221 83% 58%;
+    --invoice-accent: 217 33% 12%;
+    --table-header: 217 33% 15%;
+    --table-border: 217 33% 18%;
+    --total-highlight: 271 76% 58%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 58%), hsl(271 76% 58%));
+    --gradient-header: linear-gradient(135deg, hsl(221 83% 58%), hsl(221 83% 63%));
+    --gradient-accent: linear-gradient(180deg, hsl(217 33% 12%), hsl(217 33% 10%));
+    --gradient-success: linear-gradient(135deg, hsl(158 64% 57%), hsl(158 64% 52%));
+    --gradient-warning: linear-gradient(135deg, hsl(43 96% 61%), hsl(43 96% 56%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    
+    --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.2), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
+    --shadow-large: 0 10px 15px -3px hsl(0 0% 0% / 0.25), 0 4px 6px -4px hsl(0 0% 0% / 0.2);
+    --shadow-colored: 0 8px 32px hsl(221 83% 58% / 0.2);
+    --shadow-purple: 0 8px 32px hsl(271 76% 58% / 0.2);
+    --shadow-emerald: 0 8px 32px hsl(158 64% 57% / 0.2);
+    
+    --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.2), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
+    --shadow-large: 0 10px 15px -3px hsl(0 0% 0% / 0.2), 0 4px 6px -4px hsl(0 0% 0% / 0.2);
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-latin;
+  }
+  
+  /* Arabic/Kurdish font family */
+  [dir="rtl"] body,
+  [lang="ar"] *,
+  [lang="ckb"] * {
+    font-family: var(--font-arabic) !important;
+  }
+  
+  [lang="ar"],
+  [lang="ckb"] {
+    font-family: var(--font-arabic) !important;
+  }
+  
+  /* Print styles for invoices */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .print-page {
+      page-break-inside: avoid;
+      margin: 0;
+      box-shadow: none;
+    }
+    
+    .print-break {
+      page-break-before: always;
+    }
+  }
+}
+
+@layer components {
+  /* Custom scrollbars */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+  
+  /* Invoice specific styles */
+  .invoice-shadow {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .invoice-header-gradient {
+    background: var(--gradient-header);
+  }
+  
+  .invoice-accent-gradient {
+    background: var(--gradient-accent);
+  }
+
+  /* Responsive text scaling */
+  .text-responsive-xs {
+    @apply text-xs;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm;
+  }
+
+  .text-responsive-base {
+    @apply text-sm lg:text-base;
+  }
+
+  .text-responsive-lg {
+    @apply text-base lg:text-lg;
+  }
+
+  .text-responsive-xl {
+    @apply text-lg lg:text-xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-xl lg:text-2xl;
+  }
+
+  /* Responsive padding/margin utilities */
+  .p-responsive {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+
+  .px-responsive {
+    @apply px-3 sm:px-4 lg:px-6;
+  }
+
+  .py-responsive {
+    @apply py-3 sm:py-4 lg:py-6;
+  }
+
+  .gap-responsive {
+    @apply gap-3 sm:gap-4 lg:gap-6;
+  }
+
+  /* Mobile-first form styles */
+  .form-input-mobile {
+    @apply h-11 sm:h-10 text-base sm:text-sm;
+  }
+
+  .form-button-mobile {
+    @apply h-11 sm:h-10 px-4 text-base sm:text-sm;
+  }
+
+  /* Mobile table alternatives */
+  .mobile-table-card {
+    @apply block lg:hidden;
+  }
+
+  .desktop-table {
+    @apply hidden lg:block;
+  }
+
+  /* Better touch targets for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Responsive grid layouts */
+  .grid-responsive-auto {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-auto gap-4;
+  }
+
+  .grid-responsive-sidebar {
+    @apply flex flex-col lg:flex-row gap-4 lg:gap-6;
+  }
+
+  /* Mobile sheet adjustments */
+  .sheet-mobile-width {
+    @apply w-[90vw] sm:w-[350px] max-w-[400px];
+  }
+
+  /* Responsive dialog sizing */
+  .dialog-responsive {
+    @apply w-[95vw] sm:w-[90vw] md:w-[80vw] lg:w-[70vw] xl:w-[60vw] max-w-4xl;
+  }
+
+  /* Gradient text animation */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  /* Special effects for Make Invoice buttons */
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .shadow-3xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 25px 50px -12px rgba(59, 130, 246, 0.15);
+  }
+
+  .dark .shadow-3xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 25px 50px -12px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Elegant button glass effect */
+  .btn-glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .btn-glass {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Premium hover effects */
+  .btn-premium-hover {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-premium-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  .btn-premium-hover:hover::before {
+    left: 100%;
+  }
+
+  /* Colorful background patterns */
+  .bg-colorful-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(221 83% 53% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(271 76% 53% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 25% 75%, hsl(158 64% 52% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, hsl(43 96% 56% / 0.05) 0%, transparent 50%);
+  }
+
+  .dark .bg-colorful-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(221 83% 53% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(271 76% 53% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 25% 75%, hsl(158 64% 52% / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, hsl(43 96% 56% / 0.03) 0%, transparent 50%);
+  }
+
+  /* Floating animation for accent elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 640px) {
+  /* Ensure text inputs are readable on mobile */
+  input[type="text"],
+  input[type="email"], 
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Better spacing for mobile forms */
+  .mobile-form-spacing > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Stack buttons vertically on very small screens */
+  .mobile-button-stack {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mobile-button-stack > button {
+    width: 100%;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Optimize for tablet portrait/landscape */
+  .tablet-grid-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* High DPI screen adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .invoice-shadow {
+    box-shadow: 0 2px 6px 0 hsl(220 13% 18% / 0.15), 0 1px 3px -1px hsl(220 13% 18% / 0.15);
+  }
+}
