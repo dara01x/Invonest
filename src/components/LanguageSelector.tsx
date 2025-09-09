@@ -11,9 +11,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import type { Language } from "@/lib/i18n";
 
 const languages = [
-  { code: 'en' as Language, name: 'English', flag: '🇺🇸' },
-  { code: 'ar' as Language, name: 'العربية', flag: '🇸🇦' },
-  { code: 'ckb' as Language, name: 'کوردی', flag: '🇮🇶' },
+  { code: 'en' as Language, name: 'English' },
+  { code: 'ar' as Language, name: 'العربية' },
+  { code: 'ckb' as Language, name: 'کوردی' },
 ];
 
 export const LanguageSelector = ({ fullWidth = false }: { fullWidth?: boolean }) => {
@@ -50,9 +50,6 @@ export const LanguageSelector = ({ fullWidth = false }: { fullWidth?: boolean })
           {/* Content */}
           <div className="relative flex items-center gap-3">
             <Languages className={`${fullWidth ? 'h-5 w-5' : 'h-4 w-4'} flex-shrink-0 transition-transform group-hover:rotate-12 duration-300`} />
-            <span className={`${fullWidth ? 'text-xl' : 'text-xl'} transition-transform group-hover:scale-110 duration-300`}>
-              {currentLanguage?.flag}
-            </span>
             <span className={`font-semibold transition-all duration-300 ${fullWidth ? 'text-base' : (!isMobile ? 'hidden sm:inline' : 'hidden')}`}>
               {currentLanguage?.name}
             </span>
@@ -93,9 +90,6 @@ export const LanguageSelector = ({ fullWidth = false }: { fullWidth?: boolean })
               }
             `}
           >
-            <span className="text-xl transition-transform group-hover/item:scale-110 duration-200">
-              {lang.flag}
-            </span>
             <span className="text-sm sm:text-base transition-all duration-200">
               {lang.name}
             </span>
