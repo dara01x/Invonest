@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { 
-  FileText, 
   Globe,
   Zap, 
   Download, 
@@ -60,7 +59,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       description: t('beautifulThemesDesc')
     },
     {
-      icon: FileText,
+      icon: Star,
       title: t('professionalDesign'),
       description: t('professionalDesignDesc')
     }
@@ -92,17 +91,12 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
             {/* Logo + App Name */}
             <div className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'}`}>
-              <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary">
+              <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 p-1">
                 <img 
-                  src="/logo/Icon.png" 
+                  src="./logo/Icon.png" 
                   alt="Invonest Logo" 
-                  className="h-5 w-5 sm:h-7 sm:w-7 object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                  }}
+                  className="h-full w-full object-contain"
                 />
-                <FileText className="h-5 w-5 sm:h-7 sm:w-7 text-primary-foreground hidden" />
               </div>
               <span className="text-lg sm:text-xl font-bold text-foreground leading-none">{t('appTitle')}</span>
             </div>
@@ -258,17 +252,12 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             <div className="mb-8 sm:mb-10 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl sm:rounded-3xl blur-xl scale-110"></div>
-                <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl bg-primary shadow-2xl">
+                <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 shadow-2xl backdrop-blur-sm p-2 sm:p-3">
                   <img 
-                    src="/logo/Icon.png" 
+                    src="./logo/Icon.png" 
                     alt="Invonest Logo" 
-                    className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                    }}
+                    className="h-full w-full object-contain"
                   />
-                  <FileText className="h-10 w-10 sm:h-12 sm:w-12 text-primary-foreground hidden" />
                 </div>
               </div>
             </div>
@@ -516,17 +505,12 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <div className="space-y-4 sm:col-span-2 lg:col-span-1">
               <div className={`flex items-center ${language === 'en' ? 'space-x-4' : 'gap-4'}`}>
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 p-1">
                   <img 
-                    src="/logo/Icon.png" 
+                    src="./logo/Icon.png" 
                     alt="Invonest Logo" 
-                    className="h-5 w-5 object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                    }}
+                    className="h-full w-full object-contain"
                   />
-                  <FileText className="h-5 w-5 text-primary-foreground hidden" />
                 </div>
                 <span className="font-bold text-foreground">{t('appTitle')}</span>
               </div>
