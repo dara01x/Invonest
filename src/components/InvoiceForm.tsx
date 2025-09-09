@@ -882,7 +882,7 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
 
       {/* Preview Dialog */}
       <Dialog open={showPreview} onOpenChange={setShowPreview}>
-        <DialogContent className="max-w-xs sm:max-w-2xl md:max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="w-[95vw] sm:max-w-2xl md:max-w-4xl lg:max-w-6xl max-h-[90vh] overflow-y-auto p-2 sm:p-6">
           <DialogHeader>
             <DialogTitle>{t('previewInvoice')}</DialogTitle>
           </DialogHeader>
@@ -944,9 +944,9 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
   };
 
   return (
-    <div className={`w-full mx-auto bg-white text-black shadow-2xl border border-gray-200 ${isRTL ? 'rtl' : 'ltr'} overflow-hidden`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div className={`invoice-preview-mobile w-full mx-auto bg-white text-black shadow-2xl border border-gray-200 ${isRTL ? 'rtl' : 'ltr'} overflow-hidden rounded-lg`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       {/* Header */}
-      <div className="text-white p-4 sm:p-6 lg:p-8 relative overflow-hidden" style={{ 
+      <div className="invoice-header text-white relative overflow-hidden" style={{ 
         background: themeGradient,
         boxShadow: `0 4px 20px ${themeColor}40`
       }}>
@@ -956,23 +956,23 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
           <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full" style={{ background: `radial-gradient(circle, white 0.5px, transparent 0.5px)`, backgroundSize: '15px 15px' }}></div>
         </div>
         
-        <div className="relative flex flex-col sm:flex-row justify-between items-start gap-4">
-          <div className="flex items-center gap-4 lg:gap-6">
+        <div className="relative flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 lg:gap-6">
             {logoUrl && (
               <div className="relative flex-shrink-0">
                 <img
                   src={logoUrl}
                   alt="Company Logo"
-                  className="w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-xl bg-white/90 backdrop-blur-sm p-2 shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-sm p-1 sm:p-2 shadow-lg"
                 />
               </div>
             )}
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold mb-2">{t('invoice').toUpperCase()}</h1>
-              <p className="text-base lg:text-lg opacity-90">{invoice.invoiceNo}</p>
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">{t('invoice').toUpperCase()}</h1>
+              <p className="text-sm sm:text-base lg:text-lg opacity-90">{invoice.invoiceNo}</p>
             </div>
           </div>
-          <div className={`text-${isRTL ? 'left' : 'right'} text-sm lg:text-base w-full sm:w-auto`}>
+          <div className={`text-${isRTL ? 'left' : 'right'} text-xs sm:text-sm lg:text-base w-full sm:w-auto`}>
             <p className="mb-1">{t('issueDate')}: {new Date(invoice.issueDate).toLocaleDateString()}</p>
             <p>{t('dueDate')}: {new Date(invoice.dueDate).toLocaleDateString()}</p>
           </div>
@@ -980,131 +980,137 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
       </div>
 
       {/* Company Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 mb-6 lg:mb-8 p-4 lg:p-8">
-        <div className="bg-gray-50 p-4 lg:p-6 rounded-xl border-l-4" style={{ borderLeftColor: themeColor }}>
-          <h3 className="font-bold text-base lg:text-lg mb-4 flex items-center gap-2" style={{ color: themeColor }}>
-            <Building2 className="h-4 w-4 lg:h-5 lg:w-5" />
-            {t('from')}:
-          </h3>
-          <div className="space-y-2">
-            <p className="font-semibold text-base lg:text-lg text-gray-800">{sellerInfo.name}</p>
-            <p className="text-gray-600 text-xs lg:text-sm whitespace-pre-line leading-relaxed">{sellerInfo.address}</p>
-            <div className="flex items-center gap-2 text-gray-600 text-xs lg:text-sm">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-              {sellerInfo.phone}
-            </div>
-            <div className="flex items-center gap-2 text-gray-600 text-xs lg:text-sm">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-              {sellerInfo.email}
+      <div className="invoice-section">
+        <div className="invoice-grid grid gap-3 sm:gap-4 lg:gap-8 mb-4 sm:mb-6 lg:mb-8">
+          <div className="bg-gray-50 p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl border-l-4" style={{ borderLeftColor: themeColor }}>
+            <h3 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 flex items-center gap-2" style={{ color: themeColor }}>
+              <Building2 className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
+              {t('from')}:
+            </h3>
+            <div className="space-y-1 sm:space-y-2">
+              <p className="font-semibold text-sm sm:text-base lg:text-lg text-gray-800">{sellerInfo.name}</p>
+              <p className="text-gray-600 text-xs sm:text-xs lg:text-sm whitespace-pre-line leading-relaxed">{sellerInfo.address}</p>
+              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                {sellerInfo.phone}
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                {sellerInfo.email}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="bg-gray-50 p-4 lg:p-6 rounded-xl border-l-4" style={{ borderLeftColor: themeColor }}>
-          <h3 className="font-bold text-base lg:text-lg mb-4 flex items-center gap-2" style={{ color: themeColor }}>
-            <User className="h-4 w-4 lg:h-5 lg:w-5" />
-            {t('to')}:
-          </h3>
-          <div className="space-y-2">
-            <p className="font-semibold text-base lg:text-lg text-gray-800">{buyerInfo.name}</p>
-            <p className="text-gray-600 text-xs lg:text-sm whitespace-pre-line leading-relaxed">{buyerInfo.address}</p>
-            <div className="flex items-center gap-2 text-gray-600 text-xs lg:text-sm">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-              {buyerInfo.phone}
-            </div>
-            <div className="flex items-center gap-2 text-gray-600 text-xs lg:text-sm">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-              {buyerInfo.email}
+          <div className="bg-gray-50 p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl border-l-4" style={{ borderLeftColor: themeColor }}>
+            <h3 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 flex items-center gap-2" style={{ color: themeColor }}>
+              <User className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
+              {t('to')}:
+            </h3>
+            <div className="space-y-1 sm:space-y-2">
+              <p className="font-semibold text-sm sm:text-base lg:text-lg text-gray-800">{buyerInfo.name}</p>
+              <p className="text-gray-600 text-xs sm:text-xs lg:text-sm whitespace-pre-line leading-relaxed">{buyerInfo.address}</p>
+              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                {buyerInfo.phone}
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                {buyerInfo.email}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Items Table */}
-      <div className="mb-6 lg:mb-8 px-4 lg:px-8">
-        {/* Mobile Table View */}
-        <div className="block lg:hidden space-y-4">
-          {invoice.items.map((item, index) => (
-            <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4" style={{ borderLeftColor: themeColor }}>
-              <div className="space-y-2">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-gray-800 truncate">{item.name}</p>
-                    {item.description && (
-                      <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                    )}
+      <div className="invoice-section">
+        <div className="mb-4 sm:mb-6 lg:mb-8">
+          {/* Mobile Table View */}
+          <div className="invoice-table-mobile block lg:hidden">
+            {invoice.items.map((item, index) => (
+              <div key={index} className="invoice-card bg-gray-50 border-l-4" style={{ borderLeftColor: themeColor }}>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-gray-800 text-sm sm:text-base truncate">{item.name}</p>
+                      {item.description && (
+                        <p className="text-xs sm:text-sm text-gray-600 mt-1">{item.description}</p>
+                      )}
+                    </div>
+                    <Badge variant="outline" className="ml-2 text-xs">#{index + 1}</Badge>
                   </div>
-                  <Badge variant="outline" className="ml-2 text-xs">#{index + 1}</Badge>
-                </div>
-                <div className="grid grid-cols-3 gap-4 pt-2 border-t border-gray-200">
-                  <div className="text-center">
-                    <p className="text-xs text-gray-500">{t('qty')}</p>
-                    <p className="font-medium">{item.quantity}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs text-gray-500">{t('unitPrice')}</p>
-                    <p className="font-medium">{formatCurrency(item.unitPrice)}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs text-gray-500">{t('total')}</p>
-                    <p className="font-bold text-gray-800">{formatCurrency(item.lineTotal)}</p>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-2 border-t border-gray-200">
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500">{t('qty')}</p>
+                      <p className="font-medium text-sm">{item.quantity}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500">{t('unitPrice')}</p>
+                      <p className="font-medium text-sm">{formatCurrency(item.unitPrice)}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500">{t('total')}</p>
+                      <p className="font-bold text-gray-800 text-sm">{formatCurrency(item.lineTotal)}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Desktop Table View */}
-        <div className="hidden lg:block overflow-hidden rounded-xl border border-gray-200 shadow-sm">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="text-white" style={{ background: themeGradient }}>
-                <th className="p-4 text-left font-semibold">{t('itemDescription')}</th>
-                <th className="p-4 text-center font-semibold">{t('qty')}</th>
-                <th className="p-4 text-right font-semibold">{t('unitPrice')}</th>
-                <th className="p-4 text-right font-semibold">{t('amount')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoice.items.map((item, index) => (
-                <tr key={index} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                  <td className="p-4">
-                    <div>
-                      <p className="font-semibold text-gray-800">{item.name}</p>
-                      {item.description && (
-                        <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                      )}
-                    </div>
-                  </td>
-                  <td className="p-4 text-center text-gray-700">{item.quantity}</td>
-                  <td className="p-4 text-right text-gray-700">{formatCurrency(item.unitPrice)}</td>
-                  <td className="p-4 text-right font-semibold text-gray-800">{formatCurrency(item.lineTotal)}</td>
+          {/* Desktop Table View */}
+          <div className="hidden lg:block overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="text-white" style={{ background: themeGradient }}>
+                  <th className="p-4 text-left font-semibold">{t('itemDescription')}</th>
+                  <th className="p-4 text-center font-semibold">{t('qty')}</th>
+                  <th className="p-4 text-right font-semibold">{t('unitPrice')}</th>
+                  <th className="p-4 text-right font-semibold">{t('amount')}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {invoice.items.map((item, index) => (
+                  <tr key={index} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+                    <td className="p-4">
+                      <div>
+                        <p className="font-semibold text-gray-800">{item.name}</p>
+                        {item.description && (
+                          <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                        )}
+                      </div>
+                    </td>
+                    <td className="p-4 text-center text-gray-700">{item.quantity}</td>
+                    <td className="p-4 text-right text-gray-700">{formatCurrency(item.unitPrice)}</td>
+                    <td className="p-4 text-right font-semibold text-gray-800">{formatCurrency(item.lineTotal)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       {/* Totals */}
-      <div className="flex justify-end mb-6 lg:mb-8 px-4 lg:px-8">
-        <div className="w-full sm:w-80">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 lg:p-6 rounded-xl shadow-sm border border-gray-200">
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-600 font-medium text-sm lg:text-base">{t('subtotal')}:</span>
-                <span className="font-semibold text-gray-800 text-sm lg:text-base">{formatCurrency(invoice.summary.subtotal)}</span>
-              </div>
-              {invoice.summary.discountTotal > 0 && (
-                <div className="flex justify-between items-center py-2 text-red-600">
-                  <span className="font-medium text-sm lg:text-base">{t('discount')}:</span>
-                  <span className="font-semibold text-sm lg:text-base">-{formatCurrency(invoice.summary.discountTotal)}</span>
+      <div className="invoice-section">
+        <div className="flex justify-end mb-4 sm:mb-6 lg:mb-8">
+          <div className="w-full sm:w-80">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl shadow-sm border border-gray-200">
+              <div className="space-y-2 sm:space-y-3">
+                <div className="flex justify-between items-center py-1 sm:py-2">
+                  <span className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">{t('subtotal')}:</span>
+                  <span className="font-semibold text-gray-800 text-xs sm:text-sm lg:text-base">{formatCurrency(invoice.summary.subtotal)}</span>
                 </div>
-              )}
-              <div className="border-t border-gray-300 pt-3 mt-3">
-                <div className="flex justify-between items-center py-2 text-white rounded-lg px-4" style={{ background: themeGradient }}>
-                  <span className="font-bold text-base lg:text-lg">{t('total')}:</span>
-                  <span className="font-bold text-lg lg:text-xl">{formatCurrency(invoice.summary.grandTotal)}</span>
+                {invoice.summary.discountTotal > 0 && (
+                  <div className="flex justify-between items-center py-1 sm:py-2 text-red-600">
+                    <span className="font-medium text-xs sm:text-sm lg:text-base">{t('discount')}:</span>
+                    <span className="font-semibold text-xs sm:text-sm lg:text-base">-{formatCurrency(invoice.summary.discountTotal)}</span>
+                  </div>
+                )}
+                <div className="border-t border-gray-300 pt-2 sm:pt-3 mt-2 sm:mt-3">
+                  <div className="flex justify-between items-center py-2 text-white rounded-lg px-3 sm:px-4" style={{ background: themeGradient }}>
+                    <span className="font-bold text-sm sm:text-base lg:text-lg">{t('total')}:</span>
+                    <span className="font-bold text-base sm:text-lg lg:text-xl">{formatCurrency(invoice.summary.grandTotal)}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1114,13 +1120,15 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
 
       {/* Notes and Terms */}
       {invoice.notes && (
-        <div className="border-t border-gray-200 pt-6 lg:pt-8 mx-4 lg:mx-8 pb-4 lg:pb-6">
-          <div className="bg-gray-50 p-4 lg:p-6 rounded-xl">
-            <h4 className="font-bold text-base lg:text-lg mb-3 flex items-center gap-2" style={{ color: themeColor }}>
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: themeColor }}></div>
-              {t('notes')}:
-            </h4>
-            <p className="text-gray-700 text-sm lg:text-base leading-relaxed">{invoice.notes}</p>
+        <div className="invoice-section">
+          <div className="border-t border-gray-200 pt-4 sm:pt-6 lg:pt-8 pb-3 sm:pb-4 lg:pb-6">
+            <div className="bg-gray-50 p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl">
+              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-2 sm:mb-3 flex items-center gap-2" style={{ color: themeColor }}>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style={{ backgroundColor: themeColor }}></div>
+                {t('notes')}:
+              </h4>
+              <p className="text-gray-700 text-xs sm:text-sm lg:text-base leading-relaxed">{invoice.notes}</p>
+            </div>
           </div>
         </div>
       )}

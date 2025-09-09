@@ -115,8 +115,34 @@ export const generateInvoicePDF = async (
       heightLeft -= pageHeight;
     }
     
-    // Download PDF
-    pdf.save(filename);
+    // Mobile-friendly PDF download
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // For mobile devices, create a blob URL and open in new tab
+      const pdfBlob = pdf.output('blob');
+      const blobUrl = URL.createObjectURL(pdfBlob);
+      
+      // Try to download directly first
+      try {
+        pdf.save(filename);
+      } catch (error) {
+        // Fallback: open in new window for mobile
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Clean up the blob URL after a delay
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      }
+    } else {
+      // Desktop download
+      pdf.save(filename);
+    }
     
     return { success: true, message: 'PDF generated successfully' };
     

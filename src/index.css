@@ -348,6 +348,31 @@ All colors MUST be HSL for perfect theme switching.
     @apply w-[95vw] sm:w-[90vw] md:w-[80vw] lg:w-[70vw] xl:w-[60vw] max-w-4xl;
   }
 
+  /* Mobile invoice preview optimizations */
+  .invoice-preview-mobile {
+    @apply text-sm sm:text-base;
+  }
+
+  .invoice-preview-mobile .invoice-header {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+
+  .invoice-preview-mobile .invoice-section {
+    @apply p-3 sm:p-4 lg:p-6;
+  }
+
+  .invoice-preview-mobile .invoice-grid {
+    @apply grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6;
+  }
+
+  .invoice-preview-mobile .invoice-table-mobile {
+    @apply space-y-3 sm:space-y-4;
+  }
+
+  .invoice-preview-mobile .invoice-card {
+    @apply p-3 sm:p-4 rounded-lg;
+  }
+
   /* Gradient text animation */
   .animate-gradient {
     background-size: 200% 200%;
