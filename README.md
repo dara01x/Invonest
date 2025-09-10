@@ -5,7 +5,7 @@
 Invonest is a **100% free** and incredibly easy-to-use invoice generator that creates professional invoices in **three languages**. No sign-up required, no hidden fees, no limitations - just beautiful invoices in seconds.
 
 ## 🌐 Live Demo
-**Try it now:** [https://dara01x.github.io/Invonest/](https://dara01x.github.io/Invonest/)
+**Try it now:** [https://invonest.me/](invonest)
 
 ![Invonest Preview](public/logo/Icon.png)
 
@@ -48,31 +48,7 @@ Invonest is a **100% free** and incredibly easy-to-use invoice generator that cr
 | **Flexible Discounts** | Percentage or fixed amount discounts |
 | **Professional Layout** | Clean, business-ready invoice design |
 
-## 📱 Screenshots
 
-*Create professional invoices in any language with just a few clicks*
-
-## 🏃‍♂️ Quick Start
-
-### Option 1: Use Online (Recommended)
-Simply visit the live application - no installation needed!
-
-### Option 2: Run Locally
-```bash
-# Clone the repository
-git clone https://github.com/dara01x/multi-bill-magic.git
-
-# Navigate to project directory
-cd multi-bill-magic
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-Open your browser and go to `http://localhost:5173`
 
 ## 🛠️ Built With
 
@@ -105,25 +81,3 @@ Traditional invoice generators are either:
 - ✅ No watermarks or limitations
 - ✅ Perfect RTL support for Arabic & Kurdish
 - ✅ Simple and intuitive interface
-
-## 🤝 Contributing
-
-We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 💝 Support the Project
-
-If Invonest helps your business, consider:
-- ⭐ Starring this repository
-- 🐛 Reporting bugs or requesting features
-- 🔄 Sharing with other business owners
-- 💡 Contributing to the codebase
-
----
-
-**Made with ❤️ for the global business community**
-
-*Invonest - Where professional invoicing meets simplicity*

@@ -32,7 +32,7 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
   
   // Form state
   const [formData, setFormData] = useState({
-    invoiceNo: invoice?.invoiceNo || '',
+    invoiceNo: invoice?.invoiceNo || `INV-${Date.now().toString().slice(-6)}`,
     currency: invoice?.currency || 'USD',
     issueDate: invoice?.issueDate || new Date().toISOString().split('T')[0],
     dueDate: invoice?.dueDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -63,7 +63,7 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
       id: '1',
       name: '',
       description: '',
-      quantity: 1,
+      quantity: 0,
       unitPrice: 0,
       lineTotal: 0,
     }
@@ -108,7 +108,7 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
       id: Date.now().toString(),
       name: '',
       description: '',
-      quantity: 1,
+      quantity: 0,
       unitPrice: 0,
       lineTotal: 0,
     };
@@ -737,11 +737,16 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                               type="number"
                               min="0"
                               step="1"
-                              value={item.quantity}
+                              value={item.quantity === 0 ? '' : item.quantity}
                               onChange={(e) => {
                                 const value = parseFloat(e.target.value) || 0;
                                 const clampedValue = Math.max(value, 0);
                                 updateItem(item.id, 'quantity', clampedValue);
+                              }}
+                              onFocus={(e) => {
+                                if (e.target.value === '0') {
+                                  e.target.select();
+                                }
                               }}
                               placeholder={t('quantityPlaceholder')}
                               className="mt-1"
@@ -754,11 +759,16 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                               type="number"
                               min="0"
                               step="0.01"
-                              value={item.unitPrice}
+                              value={item.unitPrice === 0 ? '' : item.unitPrice}
                               onChange={(e) => {
                                 const value = parseFloat(e.target.value) || 0;
                                 const clampedValue = Math.max(value, 0);
                                 updateItem(item.id, 'unitPrice', clampedValue);
+                              }}
+                              onFocus={(e) => {
+                                if (e.target.value === '0') {
+                                  e.target.select();
+                                }
                               }}
                               placeholder={t('pricePlaceholder')}
                               className="mt-1"
@@ -814,11 +824,16 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                           type="number"
                           min="0"
                           step="0.01"
-                          value={item.unitPrice}
+                          value={item.unitPrice === 0 ? '' : item.unitPrice}
                           onChange={(e) => {
                             const value = parseFloat(e.target.value) || 0;
                             const clampedValue = Math.max(value, 0);
                             updateItem(item.id, 'unitPrice', clampedValue);
+                          }}
+                          onFocus={(e) => {
+                            if (e.target.value === '0') {
+                              e.target.select();
+                            }
                           }}
                           placeholder={t('pricePlaceholder')}
                           className="border border-input bg-background px-3 py-2 h-9 text-right focus:border-primary focus:ring-1 focus:ring-primary"
@@ -829,11 +844,16 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                           type="number"
                           min="0"
                           step="1"
-                          value={item.quantity}
+                          value={item.quantity === 0 ? '' : item.quantity}
                           onChange={(e) => {
                             const value = parseFloat(e.target.value) || 0;
                             const clampedValue = Math.max(value, 0);
                             updateItem(item.id, 'quantity', clampedValue);
+                          }}
+                          onFocus={(e) => {
+                            if (e.target.value === '0') {
+                              e.target.select();
+                            }
                           }}
                           placeholder={t('quantityPlaceholder')}
                           className="border border-input bg-background px-3 py-2 h-9 text-center focus:border-primary focus:ring-1 focus:ring-primary"
@@ -1041,7 +1061,9 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
             )}
             <div>
               <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">{t('invoice').toUpperCase()}</h1>
-              <p className="text-sm sm:text-base lg:text-lg opacity-90">{invoice.invoiceNo}</p>
+              <p className="text-sm sm:text-base lg:text-lg opacity-90">
+                {invoice.invoiceNo || `INV-${Date.now().toString().slice(-6)}`}
+              </p>
             </div>
           </div>
           <div className={`text-${isRTL ? 'left' : 'right'} text-xs sm:text-sm lg:text-base w-full sm:w-auto`}>
