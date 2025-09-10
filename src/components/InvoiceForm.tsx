@@ -222,8 +222,22 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
 
   const formatCurrency = (amount: number) => {
     const selectedCurrency = currencies.find(c => c.code === formData.currency);
-    const symbol = selectedCurrency?.symbol || '$';
-    return `${symbol}${amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+    let symbol = selectedCurrency?.symbol || '$';
+    
+    // Use currency code for Iraqi Dinar instead of symbol
+    if (formData.currency === 'IQD') {
+      symbol = 'IQD';
+    }
+    
+    // Remove trailing zeros
+    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    
+    // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
+    if ((language === 'ar' || language === 'ckb') && (formData.currency === 'IQD' || formData.currency === 'SAR' || formData.currency === 'AED')) {
+      return `${formattedAmount} ${symbol}`;
+    }
+    
+    return `${symbol}${formattedAmount}`;
   };
 
   // Settings Panel Component
@@ -416,10 +430,10 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                             e.preventDefault();
                             removeLogo();
                           }}
-                          className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+                          className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 z-10"
                           title={t('removeLogo')}
                         >
-                          <X className="h-3 w-3" />
+                          <X className="h-4 w-4" />
                         </button>
                       </>
                     ) : (
@@ -937,10 +951,23 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
   const { t } = useTranslation(language);
   
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: invoice.currency || 'USD',
-    }).format(amount);
+    const selectedCurrency = currencies.find(c => c.code === invoice.currency);
+    let symbol = selectedCurrency?.symbol || '$';
+    
+    // Use currency code for Iraqi Dinar instead of symbol
+    if (invoice.currency === 'IQD') {
+      symbol = 'IQD';
+    }
+    
+    // Remove trailing zeros
+    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    
+    // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
+    if ((language === 'ar' || language === 'ckb') && (invoice.currency === 'IQD' || invoice.currency === 'SAR' || invoice.currency === 'AED')) {
+      return `${formattedAmount} ${symbol}`;
+    }
+    
+    return `${symbol}${formattedAmount}`;
   };
 
   return (

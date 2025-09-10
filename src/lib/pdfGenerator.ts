@@ -66,10 +66,14 @@ export const generateInvoicePDF = async (
     tempDiv.style.direction = language === 'en' ? 'ltr' : 'rtl';
     tempDiv.style.textAlign = language === 'en' ? 'left' : 'right';
     
-    // Generate HTML content
+    // Generate HTML content with page break considerations
     tempDiv.innerHTML = generateInvoiceHTML(invoice, language, sellerInfo, buyerInfo, themeColor, optimizedLogoUrl, themeGradient, t);
     
     document.body.appendChild(tempDiv);
+    
+    // Calculate content sections for better page breaks
+    const mainContent = tempDiv.querySelector('.main-content') as HTMLElement;
+    const notesSection = tempDiv.querySelector('.notes-section') as HTMLElement;
     
     // Generate canvas from HTML with optimizations
     const canvas = await html2canvas(tempDiv, {
@@ -164,8 +168,8 @@ const optimizeLogoForPDF = async (logoUrl: string): Promise<string> => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       
-      // Optimize size for PDF (max 200px)
-      const maxSize = 200;
+      // Optimize size for PDF (max 300px for better quality)
+      const maxSize = 300;
       let { width, height } = img;
       
       if (width > maxSize || height > maxSize) {
@@ -214,15 +218,29 @@ const generateInvoiceHTML = (
   // Helper function to format currency
   const formatCurrency = (amount: number) => {
     const selectedCurrency = currencies.find(c => c.code === invoice.currency);
-    const symbol = selectedCurrency?.symbol || '$';
-    return `${symbol}${amount.toFixed(2)}`;
+    let symbol = selectedCurrency?.symbol || '$';
+    
+    // Use currency code for Iraqi Dinar instead of symbol
+    if (invoice.currency === 'IQD') {
+      symbol = 'IQD';
+    }
+    
+    // Remove trailing zeros
+    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    
+    // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
+    if (isRTL && (invoice.currency === 'IQD' || invoice.currency === 'SAR' || invoice.currency === 'AED')) {
+      return `${formattedAmount} ${symbol}`;
+    }
+    
+    return `${symbol}${formattedAmount}`;
   };
   
   // Use gradient if provided, otherwise use solid color
   const backgroundStyle = themeGradient || themeColor;
   
   return `
-    <div style="
+    <div class="main-content" style="
       max-width: 794px; 
       margin: 0 auto; 
       background: white; 
@@ -241,20 +259,21 @@ const generateInvoiceHTML = (
                   <table style="border-collapse: collapse;">
                     <tr>
                       ${logoUrl ? `
-                        <td style="padding-right: 20px; vertical-align: top;">
+                        <td style="padding-${isRTL ? 'left' : 'right'}: ${isRTL ? '15px' : '20px'}; vertical-align: top;">
                           <img src="${logoUrl}" alt="Logo" style="
-                            width: 70px; 
-                            height: 70px; 
+                            width: 100px; 
+                            height: 100px; 
                             object-fit: contain; 
                             background: white; 
-                            border-radius: 8px; 
-                            padding: 6px;
+                            border-radius: 12px; 
+                            padding: 8px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                           " />
                         </td>
                       ` : ''}
-                      <td style="vertical-align: top;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; margin-bottom: 5px;">${translate('invoice').toUpperCase()}</h1>
-                        <p style="margin: 0; font-size: 16px; opacity: 0.9;">${invoice.invoiceNo}</p>
+                      <td style="vertical-align: top; ${logoUrl && isRTL ? 'padding-right: 10px;' : ''}">
+                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; margin-bottom: 8px;">${translate('invoice').toUpperCase()}</h1>
+                        <p style="margin: 0; font-size: 16px; opacity: 0.9;">${translate('invoiceNo')}: ${invoice.invoiceNo}</p>
                       </td>
                     </tr>
                   </table>
@@ -322,8 +341,8 @@ const generateInvoiceHTML = (
             <tr style="background: ${backgroundStyle}; color: white;">
               <th style="padding: 15px; text-align: ${language === 'en' ? 'left' : 'right'}; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">${translate('itemDescription')}</th>
               <th style="padding: 15px; text-align: center; font-weight: 600; font-size: 14px; width: 80px; border-right: 1px solid rgba(255,255,255,0.2);">${translate('qty')}</th>
-              <th style="padding: 15px; text-align: ${language === 'en' ? 'right' : 'left'}; font-weight: 600; font-size: 14px; width: 100px; border-right: 1px solid rgba(255,255,255,0.2);">${translate('unitPrice')}</th>
-              <th style="padding: 15px; text-align: ${language === 'en' ? 'right' : 'left'}; font-weight: 600; font-size: 14px; width: 100px;">${translate('amount')}</th>
+              <th style="padding: 15px; text-align: center; font-weight: 600; font-size: 14px; width: 100px; border-right: 1px solid rgba(255,255,255,0.2);">${translate('unitPrice')}</th>
+              <th style="padding: 15px; text-align: center; font-weight: 600; font-size: 14px; width: 100px;">${translate('amount')}</th>
             </tr>
           </thead>
           <tbody>
@@ -337,8 +356,8 @@ const generateInvoiceHTML = (
                   ${item.description ? `<div style="color: #6b7280; font-size: 12px; line-height: 1.3;">${item.description}</div>` : ''}
                 </td>
                 <td style="padding: 15px; text-align: center; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${item.quantity}</td>
-                <td style="padding: 15px; text-align: ${language === 'en' ? 'right' : 'left'}; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${formatCurrency(item.unitPrice)}</td>
-                <td style="padding: 15px; text-align: ${language === 'en' ? 'right' : 'left'}; font-weight: 600; color: #1f2937; font-size: 14px;">${formatCurrency(item.lineTotal)}</td>
+                <td style="padding: 15px; text-align: center; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${formatCurrency(item.unitPrice)}</td>
+                <td style="padding: 15px; text-align: center; font-weight: 600; color: #1f2937; font-size: 14px;">${formatCurrency(item.lineTotal)}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -346,7 +365,7 @@ const generateInvoiceHTML = (
       </div>
       
       <!-- Totals -->
-      <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: ${invoice.notes ? '40px' : '30px'};">
         <tr>
           <td style="width: 60%;"></td>
           <td style="width: 40%; padding: 0 30px;">
@@ -382,28 +401,36 @@ const generateInvoiceHTML = (
           </td>
         </tr>
       </table>
-      
-      ${invoice.notes ? `
-        <div style="border-top: 1px solid #e5e7eb; padding: 20px 30px 30px 30px;">
-          <div style="
-            background: #f8fafc; 
-            padding: 20px; 
-            border-radius: 8px; 
-            border-left: 4px solid ${themeColor};
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-          ">
-            <h4 style="
-              margin: 0 0 10px 0; 
-              color: ${themeColor}; 
-              font-weight: bold; 
-              font-size: 16px;
-            ">
-              ${translate('notes')}:
-            </h4>
-            <p style="margin: 0; color: #374151; font-size: 14px; line-height: 1.5;">${invoice.notes}</p>
-          </div>
-        </div>
-      ` : ''}
     </div>
+      
+    ${invoice.notes ? `
+      <div class="notes-section" style="
+        max-width: 794px; 
+        margin: 0 auto; 
+        background: white; 
+        color: #1a1a1a; 
+        font-family: Arial, sans-serif;
+        page-break-before: auto;
+        padding: 20px 30px 30px 30px;
+      ">
+        <div style="
+          background: #f8fafc; 
+          padding: 20px; 
+          border-radius: 8px; 
+          border-left: 4px solid ${themeColor};
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        ">
+          <h4 style="
+            margin: 0 0 10px 0; 
+            color: ${themeColor}; 
+            font-weight: bold; 
+            font-size: 16px;
+          ">
+            ${translate('notes')}:
+          </h4>
+          <p style="margin: 0; color: #374151; font-size: 14px; line-height: 1.5;">${invoice.notes}</p>
+        </div>
+      </div>
+    ` : ''}
   `;
 };

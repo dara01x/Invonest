@@ -17,6 +17,7 @@ import {
   Sparkles,
   Menu,
   Mail,
+  Phone,
   PlayCircle,
   X
 } from "lucide-react";
@@ -539,9 +540,15 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
 
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">{t('contact')}</h4>
-              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="break-all">support@invonest.com</span>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Phone className="h-4 w-4 flex-shrink-0" />
+                  <span className="break-all">+964 750 192 0671</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <Mail className="h-4 w-4 flex-shrink-0" />
+                  <span className="break-all">Daramistefa30@gmail.com</span>
+                </div>
               </div>
             </div>
           </div>
