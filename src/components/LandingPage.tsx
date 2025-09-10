@@ -377,7 +377,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                       <h4 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">{t('kurdishLang')}</h4>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{t('rightToLeft')}</p>
                       <div className="rounded-md sm:rounded-lg bg-white/50 dark:bg-gray-800/50 p-2 sm:p-4 text-xs">
-                        <div className="font-medium">وەسڵی پیشەیی</div>
+                        <div className="font-medium">پسوڵەکا پیشەیی</div>
                       </div>
                     </div>
                   </div>
