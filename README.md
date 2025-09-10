@@ -5,7 +5,7 @@
 Invonest is a **100% free** and incredibly easy-to-use invoice generator that creates professional invoices in **three languages**. No sign-up required, no hidden fees, no limitations - just beautiful invoices in seconds.
 
 ## 🌐 Live Demo
-**Try it now:** [https://invonest.me/](invonest)
+**Try it now:** [invonest](https://invonest.me/)
 
 ![Invonest Preview](public/logo/Icon.png)
 
