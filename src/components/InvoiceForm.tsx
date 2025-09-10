@@ -14,6 +14,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { currencies } from "@/lib/types";
 import type { Invoice, InvoiceItem } from "@/lib/types";
 import { generateInvoicePDF } from "@/lib/pdfGenerator";
+import { trackInvoiceGeneration, trackPDFDownload } from "@/lib/analytics";
 import { 
   Eye, FileDown, Plus, X, Upload, 
   Building2, User, Settings, Palette, ChevronRight
@@ -168,6 +169,10 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
+      
+      // Track analytics events
+      trackInvoiceGeneration(language, formData.currency);
+      trackPDFDownload(invoiceData.id, language);
       
       await generateInvoicePDF(invoiceData, language, sellerInfo, buyerInfo, getCurrentThemeColor(), logoUrl, getCurrentThemeGradient());
     } catch (error) {

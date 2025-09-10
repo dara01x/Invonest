@@ -8,6 +8,7 @@ import {
 import { Languages, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { trackLanguageChange } from "@/lib/analytics";
 import type { Language } from "@/lib/i18n";
 
 const languages = [
@@ -19,6 +20,11 @@ const languages = [
 export const LanguageSelector = ({ fullWidth = false }: { fullWidth?: boolean }) => {
   const { language, changeLanguage, t } = useLanguage();
   const isMobile = useIsMobile();
+  
+  const handleLanguageChange = (newLanguage: Language) => {
+    trackLanguageChange(language, newLanguage);
+    changeLanguage(newLanguage);
+  };
   
   const currentLanguage = languages.find(lang => lang.code === language);
 
@@ -76,7 +82,7 @@ export const LanguageSelector = ({ fullWidth = false }: { fullWidth?: boolean })
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => changeLanguage(lang.code)}
+            onClick={() => handleLanguageChange(lang.code)}
             className={`
               group/item
               gap-3 px-4 py-3 rounded-lg
