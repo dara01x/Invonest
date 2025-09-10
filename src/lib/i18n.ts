@@ -18,7 +18,7 @@ export const translations = {
     
     // Invoice
     invoice: "Invoice",
-    invoiceNo: "Invoice No.",
+    invoiceNo: "Invoice No",
     issueDate: "Issue Date",
     dueDate: "Due Date",
     seller: "Seller",

@@ -15,6 +15,7 @@ import { currencies } from "@/lib/types";
 import type { Invoice, InvoiceItem } from "@/lib/types";
 import { generateInvoicePDF } from "@/lib/pdfGenerator";
 import { trackInvoiceGeneration, trackPDFDownload } from "@/lib/analytics";
+import { formatPhoneInput, formatInvoiceNumber } from "@/lib/utils";
 import { 
   Eye, FileDown, Plus, X, Upload, 
   Building2, User, Settings, Palette, ChevronRight
@@ -303,10 +304,14 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
               max="100"
               step="0.1"
               value={sidebarSettings.discountValue}
-              onChange={(e) => setSidebarSettings({ 
-                ...sidebarSettings, 
-                discountValue: parseFloat(e.target.value) || 0 
-              })}
+              onChange={(e) => {
+                const value = parseFloat(e.target.value) || 0;
+                const clampedValue = Math.min(Math.max(value, 0), 100);
+                setSidebarSettings({ 
+                  ...sidebarSettings, 
+                  discountValue: clampedValue
+                });
+              }}
               placeholder={t('percentagePlaceholder')}
               className="mt-1"
             />
@@ -325,10 +330,14 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
               min="0"
               step="0.01"
               value={sidebarSettings.discountValue}
-              onChange={(e) => setSidebarSettings({ 
-                ...sidebarSettings, 
-                discountValue: parseFloat(e.target.value) || 0 
-              })}
+              onChange={(e) => {
+                const value = parseFloat(e.target.value) || 0;
+                const clampedValue = Math.max(value, 0);
+                setSidebarSettings({ 
+                  ...sidebarSettings, 
+                  discountValue: clampedValue
+                });
+              }}
               placeholder={t('discountAmountPlaceholder')}
               className="mt-1"
             />
@@ -388,9 +397,12 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
             {isMobile && (
               <Sheet open={showSettings} onOpenChange={setShowSettings}>
                 <SheetTrigger asChild>
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button 
+                    size="sm" 
+                    className="gap-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium px-4 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 border-0"
+                  >
                     <Settings className="h-4 w-4" />
-                    {t('settings')}
+                    <span className="font-semibold">{t('settings')}</span>
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[280px] sm:w-[350px]">
@@ -548,8 +560,12 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                 <Label htmlFor="sellerPhone" className="text-sm">{t('phone')}</Label>
                 <Input
                   id="sellerPhone"
+                  type="tel"
                   value={sellerInfo.phone}
-                  onChange={(e) => setSellerInfo({ ...sellerInfo, phone: e.target.value })}
+                  onChange={(e) => {
+                    const formattedValue = formatPhoneInput(e.target.value);
+                    setSellerInfo({ ...sellerInfo, phone: formattedValue });
+                  }}
                   placeholder={t('companyPhonePlaceholder')}
                   className="mt-1"
                 />
@@ -602,8 +618,12 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                 <Label htmlFor="buyerPhone" className="text-sm">{t('phone')}</Label>
                 <Input
                   id="buyerPhone"
+                  type="tel"
                   value={buyerInfo.phone}
-                  onChange={(e) => setBuyerInfo({ ...buyerInfo, phone: e.target.value })}
+                  onChange={(e) => {
+                    const formattedValue = formatPhoneInput(e.target.value);
+                    setBuyerInfo({ ...buyerInfo, phone: formattedValue });
+                  }}
                   placeholder={t('customerPhonePlaceholder')}
                   className="mt-1"
                 />
@@ -620,8 +640,12 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                 <Label htmlFor="invoiceNo" className="text-sm">{t('invoiceNumber')}</Label>
                 <Input
                   id="invoiceNo"
+                  type="text"
                   value={formData.invoiceNo}
-                  onChange={(e) => setFormData({ ...formData, invoiceNo: e.target.value })}
+                  onChange={(e) => {
+                    const formattedValue = formatInvoiceNumber(e.target.value);
+                    setFormData({ ...formData, invoiceNo: formattedValue });
+                  }}
                   placeholder={t('invoiceNumberPlaceholder')}
                   className="mt-1"
                 />
@@ -714,7 +738,11 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                               min="0"
                               step="1"
                               value={item.quantity}
-                              onChange={(e) => updateItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
+                              onChange={(e) => {
+                                const value = parseFloat(e.target.value) || 0;
+                                const clampedValue = Math.max(value, 0);
+                                updateItem(item.id, 'quantity', clampedValue);
+                              }}
                               placeholder={t('quantityPlaceholder')}
                               className="mt-1"
                             />
@@ -727,7 +755,11 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                               min="0"
                               step="0.01"
                               value={item.unitPrice}
-                              onChange={(e) => updateItem(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                              onChange={(e) => {
+                                const value = parseFloat(e.target.value) || 0;
+                                const clampedValue = Math.max(value, 0);
+                                updateItem(item.id, 'unitPrice', clampedValue);
+                              }}
                               placeholder={t('pricePlaceholder')}
                               className="mt-1"
                             />
@@ -783,7 +815,11 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                           min="0"
                           step="0.01"
                           value={item.unitPrice}
-                          onChange={(e) => updateItem(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseFloat(e.target.value) || 0;
+                            const clampedValue = Math.max(value, 0);
+                            updateItem(item.id, 'unitPrice', clampedValue);
+                          }}
                           placeholder={t('pricePlaceholder')}
                           className="border border-input bg-background px-3 py-2 h-9 text-right focus:border-primary focus:ring-1 focus:ring-primary"
                         />
@@ -794,7 +830,11 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                           min="0"
                           step="1"
                           value={item.quantity}
-                          onChange={(e) => updateItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
+                          onChange={(e) => {
+                            const value = parseFloat(e.target.value) || 0;
+                            const clampedValue = Math.max(value, 0);
+                            updateItem(item.id, 'quantity', clampedValue);
+                          }}
                           placeholder={t('quantityPlaceholder')}
                           className="border border-input bg-background px-3 py-2 h-9 text-center focus:border-primary focus:ring-1 focus:ring-primary"
                         />
