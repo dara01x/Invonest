@@ -1,5 +1,5 @@
 # Robots.txt for Invonest - Professional Invoice Generator
-# https://invonest.com
+# https://invonest.me
 
 User-agent: *
 Allow: /
@@ -39,7 +39,7 @@ User-agent: LinkedInBot
 Allow: /
 
 # Sitemap location
-Sitemap: https://invonest.com/sitemap.xml
+Sitemap: https://invonest.me/sitemap.xml
 
-# Host specification (replace with your actual domain)
-Host: https://invonest.com
+# Host specification
+Host: https://invonest.me
