@@ -1,0 +1,3 @@
+# Netlify redirects file
+# Redirect ads.txt to Ezoic's ads.txt manager
+/ads.txt https://srv.adstxtmanager.com/19390/invonest.me 301

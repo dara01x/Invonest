@@ -1,0 +1,9 @@
+# ads.txt file for invonest.me
+# This file is managed by Ezoic for authorized ad sellers
+
+# Redirect to Ezoic's ads.txt manager
+# Visit: https://srv.adstxtmanager.com/19390/invonest.me
+
+google.com, pub-3508869974779106, DIRECT, f08c47fec0942fa0
+ezoic.com, 19390, DIRECT
+google.com, pub-8241049497608997, RESELLER, f08c47fec0942fa0
