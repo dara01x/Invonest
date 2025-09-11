@@ -1082,16 +1082,30 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
               {t('from')}:
             </h3>
             <div className="space-y-1 sm:space-y-2">
-              <p className="font-semibold text-sm sm:text-base lg:text-lg text-gray-800">{sellerInfo.name}</p>
-              <p className="text-gray-600 text-xs sm:text-xs lg:text-sm whitespace-pre-line leading-relaxed">{sellerInfo.address}</p>
-              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-                {sellerInfo.phone}
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-                {sellerInfo.email}
-              </div>
+              {sellerInfo.name && (
+                <p className="text-sm sm:text-base lg:text-lg">
+                  <span className="text-xs font-medium text-gray-500">{t('name')}: </span>
+                  <span className="font-semibold text-gray-800">{sellerInfo.name}</span>
+                </p>
+              )}
+              {sellerInfo.address && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('address')}: </span>
+                  <span className="text-gray-600">{sellerInfo.address.replace(/\n/g, ', ')}</span>
+                </p>
+              )}
+              {sellerInfo.phone && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('phone')}: </span>
+                  <span className="text-gray-600">{sellerInfo.phone}</span>
+                </p>
+              )}
+              {sellerInfo.email && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('email')}: </span>
+                  <span className="text-gray-600">{sellerInfo.email}</span>
+                </p>
+              )}
             </div>
           </div>
           <div className="bg-gray-50 p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl border-l-4" style={{ borderLeftColor: themeColor }}>
@@ -1100,16 +1114,30 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
               {t('to')}:
             </h3>
             <div className="space-y-1 sm:space-y-2">
-              <p className="font-semibold text-sm sm:text-base lg:text-lg text-gray-800">{buyerInfo.name}</p>
-              <p className="text-gray-600 text-xs sm:text-xs lg:text-sm whitespace-pre-line leading-relaxed">{buyerInfo.address}</p>
-              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-                {buyerInfo.phone}
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-xs lg:text-sm">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-                {buyerInfo.email}
-              </div>
+              {buyerInfo.name && (
+                <p className="text-sm sm:text-base lg:text-lg">
+                  <span className="text-xs font-medium text-gray-500">{t('name')}: </span>
+                  <span className="font-semibold text-gray-800">{buyerInfo.name}</span>
+                </p>
+              )}
+              {buyerInfo.address && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('address')}: </span>
+                  <span className="text-gray-600">{buyerInfo.address.replace(/\n/g, ', ')}</span>
+                </p>
+              )}
+              {buyerInfo.phone && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('phone')}: </span>
+                  <span className="text-gray-600">{buyerInfo.phone}</span>
+                </p>
+              )}
+              {buyerInfo.email && (
+                <p className="text-xs sm:text-xs lg:text-sm">
+                  <span className="font-medium text-gray-500">{t('email')}: </span>
+                  <span className="text-gray-600">{buyerInfo.email}</span>
+                </p>
+              )}
             </div>
           </div>
         </div>

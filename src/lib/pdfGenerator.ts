@@ -302,10 +302,30 @@ const generateInvoiceHTML = (
               <h3 style="margin: 0 0 15px 0; color: ${themeColor}; font-size: 16px; font-weight: bold;">
                 ${translate('from')}:
               </h3>
-              <p style="margin: 0 0 8px 0; font-weight: 600; font-size: 16px; color: #1f2937;">${sellerInfo.name}</p>
-              <p style="margin: 0 0 6px 0; color: #6b7280; font-size: 13px; line-height: 1.4;">${sellerInfo.address.replace(/\n/g, '<br>')}</p>
-              <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 13px;">${sellerInfo.phone}</p>
-              <p style="margin: 0; color: #6b7280; font-size: 13px;">${sellerInfo.email}</p>
+              ${sellerInfo.name ? `
+                <p style="margin: 0 0 6px 0; font-size: 14px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('name')}: </span>
+                  <span style="font-weight: 600;">${sellerInfo.name}</span>
+                </p>
+              ` : ''}
+              ${sellerInfo.address ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('address')}: </span>
+                  <span style="color: #6b7280;">${sellerInfo.address.replace(/\n/g, ', ')}</span>
+                </p>
+              ` : ''}
+              ${sellerInfo.phone ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('phone')}: </span>
+                  <span style="color: #6b7280;">${sellerInfo.phone}</span>
+                </p>
+              ` : ''}
+              ${sellerInfo.email ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('email')}: </span>
+                  <span style="color: #6b7280;">${sellerInfo.email}</span>
+                </p>
+              ` : ''}
             </div>
           </td>
           <td style="width: 4%;"></td>
@@ -320,10 +340,30 @@ const generateInvoiceHTML = (
               <h3 style="margin: 0 0 15px 0; color: ${themeColor}; font-size: 16px; font-weight: bold;">
                 ${translate('to')}:
               </h3>
-              <p style="margin: 0 0 8px 0; font-weight: 600; font-size: 16px; color: #1f2937;">${buyerInfo.name}</p>
-              <p style="margin: 0 0 6px 0; color: #6b7280; font-size: 13px; line-height: 1.4;">${buyerInfo.address.replace(/\n/g, '<br>')}</p>
-              <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 13px;">${buyerInfo.phone}</p>
-              <p style="margin: 0; color: #6b7280; font-size: 13px;">${buyerInfo.email}</p>
+              ${buyerInfo.name ? `
+                <p style="margin: 0 0 6px 0; font-size: 14px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('name')}: </span>
+                  <span style="font-weight: 600;">${buyerInfo.name}</span>
+                </p>
+              ` : ''}
+              ${buyerInfo.address ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('address')}: </span>
+                  <span style="color: #6b7280;">${buyerInfo.address.replace(/\n/g, ', ')}</span>
+                </p>
+              ` : ''}
+              ${buyerInfo.phone ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('phone')}: </span>
+                  <span style="color: #6b7280;">${buyerInfo.phone}</span>
+                </p>
+              ` : ''}
+              ${buyerInfo.email ? `
+                <p style="margin: 0 0 6px 0; font-size: 13px; color: #1f2937;">
+                  <span style="color: #6b7280; font-size: 12px; font-weight: 600;">${translate('email')}: </span>
+                  <span style="color: #6b7280;">${buyerInfo.email}</span>
+                </p>
+              ` : ''}
             </div>
           </td>
         </tr>
