@@ -17,6 +17,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Ezoic Ad Styles */
+@import './styles/ezoic-ads.css';
+
 /* Premium Invoice Generator Design System
 All colors MUST be HSL for perfect theme switching.
 */

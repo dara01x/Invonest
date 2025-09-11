@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,8 @@ import {
 import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { HeaderAd, InContentAd, FooterAd } from "@/components/EzoicAd";
+import { initializeLandingPageAds } from "@/lib/ezoicAds";
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -32,6 +34,11 @@ interface LandingPageProps {
 export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   const { t, language } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Initialize all Ezoic ads for this page
+  useEffect(() => {
+    initializeLandingPageAds();
+  }, []);
 
   const features = [
     {
@@ -237,6 +244,9 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         </div>
       </header>
 
+      {/* Header Ad Placement */}
+      <HeaderAd />
+
       {/* Hero Section */}
       <section className="relative py-12 sm:py-16 lg:py-20 xl:py-24 overflow-hidden">
         {/* Background Effects */}
@@ -403,6 +413,9 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
         </div>
       </section>
 
+      {/* In-Content Ad Placement */}
+      <InContentAd />
+
       {/* Key Features Section */}
       <section id="features" className="py-20 bg-muted/30">
         <div className="container mx-auto max-w-7xl px-4">
@@ -501,6 +514,8 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       </section>
 
       {/* Footer */}
+      <FooterAd />
+      
       <footer id="contact" className="border-t bg-muted/30 py-8 sm:py-10 lg:py-12">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">

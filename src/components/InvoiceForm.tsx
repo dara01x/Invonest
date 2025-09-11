@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,6 +21,8 @@ import {
   Eye, FileDown, Plus, X, Upload, 
   Building2, User, Settings, Palette, ChevronRight
 } from "lucide-react";
+import { SidebarAd, InContentAd } from "@/components/EzoicAd";
+import { initializeInvoiceFormAds } from "@/lib/ezoicAds";
 
 interface InvoiceFormProps {
   invoice?: Invoice;
@@ -79,6 +82,11 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
   const [showPreview, setShowPreview] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
+
+  // Initialize Ezoic ads for this page
+  useEffect(() => {
+    initializeInvoiceFormAds();
+  }, []);
 
   const colorThemes = [
     { name: t('oceanBlue'), value: 'blue', color: '#3B82F6', gradient: 'linear-gradient(135deg, #3B82F6, #1D4ED8)' },
@@ -925,6 +933,9 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
           </CardContent>
         </Card>
 
+        {/* In-Content Ad Placement */}
+        <InContentAd />
+
         {/* Notes Section */}
         <Card className="shadow-soft">
           <CardHeader className="pb-3 lg:pb-4">
@@ -956,6 +967,9 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
               <SettingsPanel />
             </CardContent>
           </Card>
+          
+          {/* Sidebar Ad for Desktop */}
+          <SidebarAd />
         </div>
       )}
 
