@@ -1,0 +1,10 @@
+# Redirect to Ezoic Ads.txt Manager
+# This file redirects to: https://srv.adstxtmanager.com/19390/invonest.me
+
+# Temporary entries for Ezoic detection
+ezoic.com, 19390, DIRECT
+google.com, pub-3508869974779106, DIRECT, f08c47fec0942fa0
+google.com, pub-8241049497608997, RESELLER, f08c47fec0942fa0
+
+# Note: This will be managed by Ezoic's Ads.txt Manager
+# Visit https://srv.adstxtmanager.com/19390/invonest.me for the complete file

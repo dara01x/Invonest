@@ -1,0 +1,28 @@
+# GitHub Pages Jekyll Configuration for Ezoic Ads.txt Redirect
+
+# Basic Jekyll settings
+plugins:
+  - jekyll-redirect-from
+
+# Redirect configuration for ads.txt
+# This ensures proper server-side redirect to Ezoic's Ads.txt Manager
+collections:
+  redirects:
+    output: true
+    permalink: /:name/
+
+# GitHub Pages settings
+github:
+  environment: production
+
+# Exclude files from Jekyll processing
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - bun.lockb
+  - vite.config.ts
+  - tsconfig.json
+  - README.md
+  - src/
+  - public/manifest.json
