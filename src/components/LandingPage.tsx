@@ -526,6 +526,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                 <li><a href="#features" className="hover:text-foreground transition-colors block py-1">{t('features')}</a></li>
                 <li><a href="#how-it-works" className="hover:text-foreground transition-colors block py-1">{t('howItWorksTitle')}</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-foreground transition-colors text-left py-1">{t('newInvoice')}</button></li>
+                <li><a href="/privacy-policy" className="hover:text-foreground transition-colors block py-1">{t('privacyPolicy')}</a></li>
               </ul>
             </div>
 

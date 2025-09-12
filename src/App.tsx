@@ -12,6 +12,7 @@ import SEO from "@/components/SEO";
 import { initializeGA4 } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Invoice from "./pages/Invoice";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/invoice" element={<Invoice />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
