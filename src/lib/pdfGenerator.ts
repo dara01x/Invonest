@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import type { Invoice, PDFGenerationOptions } from './types';
 import { currencies } from './types';
 import { translations, type Language } from './i18n';
+import { formatNumber } from './utils';
 
 interface CompanyInfo {
   name: string;
@@ -225,8 +226,8 @@ const generateInvoiceHTML = (
       symbol = 'IQD';
     }
     
-    // Remove trailing zeros
-    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    // Format number with commas for thousands separator
+    const formattedAmount = formatNumber(amount);
     
     // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
     if (isRTL && (invoice.currency === 'IQD' || invoice.currency === 'SAR' || invoice.currency === 'AED')) {
@@ -395,7 +396,7 @@ const generateInvoiceHTML = (
                   <div style="font-weight: 600; color: #1f2937; font-size: 14px; margin-bottom: 3px;">${item.name}</div>
                   ${item.description ? `<div style="color: #6b7280; font-size: 12px; line-height: 1.3;">${item.description}</div>` : ''}
                 </td>
-                <td style="padding: 15px; text-align: center; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${item.quantity}</td>
+                <td style="padding: 15px; text-align: center; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${formatNumber(item.quantity)}</td>
                 <td style="padding: 15px; text-align: center; color: #374151; font-size: 14px; border-right: 1px solid #f1f5f9;">${formatCurrency(item.unitPrice)}</td>
                 <td style="padding: 15px; text-align: center; font-weight: 600; color: #1f2937; font-size: 14px;">${formatCurrency(item.lineTotal)}</td>
               </tr>

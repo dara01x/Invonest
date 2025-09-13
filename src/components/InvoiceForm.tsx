@@ -14,6 +14,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { currencies } from "@/lib/types";
 import type { Invoice, InvoiceItem } from "@/lib/types";
 import { generateInvoicePDF } from "@/lib/pdfGenerator";
+import { formatNumber } from "@/lib/utils";
 import { trackInvoiceGeneration, trackPDFDownload } from "@/lib/analytics";
 import { formatPhoneInput, formatInvoiceNumber } from "@/lib/utils";
 import { 
@@ -235,8 +236,8 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
       symbol = 'IQD';
     }
     
-    // Remove trailing zeros
-    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    // Format number with commas for thousands separator
+    const formattedAmount = formatNumber(amount);
     
     // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
     if ((language === 'ar' || language === 'ckb') && (formData.currency === 'IQD' || formData.currency === 'SAR' || formData.currency === 'AED')) {
@@ -1024,8 +1025,8 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
       symbol = 'IQD';
     }
     
-    // Remove trailing zeros
-    const formattedAmount = amount % 1 === 0 ? amount.toString() : amount.toFixed(2).replace(/\.?0+$/, '');
+    // Format number with commas for thousands separator
+    const formattedAmount = formatNumber(amount);
     
     // For RTL languages (Arabic/Kurdish) and specific currencies, put symbol at the end
     if ((language === 'ar' || language === 'ckb') && (invoice.currency === 'IQD' || invoice.currency === 'SAR' || invoice.currency === 'AED')) {
@@ -1163,7 +1164,7 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
                   <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-2 border-t border-gray-200">
                     <div className="text-center">
                       <p className="text-xs text-gray-500">{t('qty')}</p>
-                      <p className="font-medium text-sm">{item.quantity}</p>
+                      <p className="font-medium text-sm">{formatNumber(item.quantity)}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-xs text-gray-500">{t('unitPrice')}</p>
@@ -1201,7 +1202,7 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
                         )}
                       </div>
                     </td>
-                    <td className="p-4 text-center text-gray-700">{item.quantity}</td>
+                    <td className="p-4 text-center text-gray-700">{formatNumber(item.quantity)}</td>
                     <td className="p-4 text-right text-gray-700">{formatCurrency(item.unitPrice)}</td>
                     <td className="p-4 text-right font-semibold text-gray-800">{formatCurrency(item.lineTotal)}</td>
                   </tr>
