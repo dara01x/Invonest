@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -18,7 +19,7 @@ import { formatNumber } from "@/lib/utils";
 import { trackInvoiceGeneration, trackPDFDownload } from "@/lib/analytics";
 import { formatPhoneInput, formatInvoiceNumber } from "@/lib/utils";
 import { 
-  Eye, FileDown, Plus, X, Upload, 
+  Eye, EyeOff, FileDown, Plus, X, Upload, 
   Building2, User, Settings, Palette, ChevronRight
 } from "lucide-react";
 
@@ -74,7 +75,9 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
     colorTheme: 'blue',
     discountType: 'none',
     discountValue: 0,
-    currency: 'USD'
+    currency: 'USD',
+    showIssueDate: true,
+    showDueDate: true
   });
 
   const [showPreview, setShowPreview] = useState(false);
@@ -176,7 +179,7 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
       trackInvoiceGeneration(language, formData.currency);
       trackPDFDownload(invoiceData.id, language);
       
-      await generateInvoicePDF(invoiceData, language, sellerInfo, buyerInfo, getCurrentThemeColor(), logoUrl, getCurrentThemeGradient());
+      await generateInvoicePDF(invoiceData, language, sellerInfo, buyerInfo, getCurrentThemeColor(), logoUrl, getCurrentThemeGradient(), {}, sidebarSettings.showIssueDate, sidebarSettings.showDueDate);
     } catch (error) {
       console.error('Error generating PDF:', error);
     }
@@ -652,23 +655,69 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
                 />
               </div>
               <div>
-                <Label htmlFor="issueDate" className="text-sm">{t('date')}</Label>
+                <div className="flex items-center justify-between mb-1">
+                  <Label htmlFor="issueDate" className="text-sm">{t('date')}</Label>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setSidebarSettings({ ...sidebarSettings, showIssueDate: !sidebarSettings.showIssueDate })}
+                    className="h-6 px-2 text-xs hover:bg-muted"
+                    title={sidebarSettings.showIssueDate ? t('hideIssueDate') : t('showIssueDate')}
+                  >
+                    {sidebarSettings.showIssueDate ? (
+                      <>
+                        <Eye className="h-3 w-3 mr-1" />
+                        {t('visible')}
+                      </>
+                    ) : (
+                      <>
+                        <EyeOff className="h-3 w-3 mr-1" />
+                        {t('hidden')}
+                      </>
+                    )}
+                  </Button>
+                </div>
                 <Input
                   id="issueDate"
                   type="date"
                   value={formData.issueDate}
                   onChange={(e) => setFormData({ ...formData, issueDate: e.target.value })}
                   className="mt-1"
+                  disabled={!sidebarSettings.showIssueDate}
                 />
               </div>
               <div className="sm:col-span-2 lg:col-span-1">
-                <Label htmlFor="dueDate" className="text-sm">{t('dueDate')}</Label>
+                <div className="flex items-center justify-between mb-1">
+                  <Label htmlFor="dueDate" className="text-sm">{t('dueDate')}</Label>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setSidebarSettings({ ...sidebarSettings, showDueDate: !sidebarSettings.showDueDate })}
+                    className="h-6 px-2 text-xs hover:bg-muted"
+                    title={sidebarSettings.showDueDate ? t('hideDueDate') : t('showDueDate')}
+                  >
+                    {sidebarSettings.showDueDate ? (
+                      <>
+                        <Eye className="h-3 w-3 mr-1" />
+                        {t('visible')}
+                      </>
+                    ) : (
+                      <>
+                        <EyeOff className="h-3 w-3 mr-1" />
+                        {t('hidden')}
+                      </>
+                    )}
+                  </Button>
+                </div>
                 <Input
                   id="dueDate"
                   type="date"
                   value={formData.dueDate}
                   onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
                   className="mt-1"
+                  disabled={!sidebarSettings.showDueDate}
                 />
               </div>
             </div>
@@ -975,6 +1024,8 @@ export const InvoiceForm = ({ invoice, onSave }: InvoiceFormProps) => {
               themeColor={getCurrentThemeColor()}
               themeGradient={getCurrentThemeGradient()}
               logoUrl={logoUrl}
+              showIssueDate={sidebarSettings.showIssueDate}
+              showDueDate={sidebarSettings.showDueDate}
             />
           </div>
         </DialogContent>
@@ -1010,9 +1061,11 @@ interface InvoicePreviewProps {
   themeColor: string;
   themeGradient: string;
   logoUrl?: string | null;
+  showIssueDate?: boolean;
+  showDueDate?: boolean;
 }
 
-const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, themeGradient, logoUrl }: InvoicePreviewProps) => {
+const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, themeGradient, logoUrl, showIssueDate = true, showDueDate = true }: InvoicePreviewProps) => {
   const isRTL = language !== 'en';
   const { t } = useTranslation(language);
   
@@ -1068,8 +1121,12 @@ const InvoicePreview = ({ invoice, language, sellerInfo, buyerInfo, themeColor, 
             </div>
           </div>
           <div className={`text-${isRTL ? 'left' : 'right'} text-xs sm:text-sm lg:text-base w-full sm:w-auto`}>
-            <p className="mb-1">{t('issueDate')}: {new Date(invoice.issueDate).toLocaleDateString()}</p>
-            <p>{t('dueDate')}: {new Date(invoice.dueDate).toLocaleDateString()}</p>
+            {showIssueDate && (
+              <p className="mb-1">{t('issueDate')}: {new Date(invoice.issueDate).toLocaleDateString()}</p>
+            )}
+            {showDueDate && (
+              <p>{t('dueDate')}: {new Date(invoice.dueDate).toLocaleDateString()}</p>
+            )}
           </div>
         </div>
       </div>

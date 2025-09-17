@@ -33,7 +33,9 @@ export const generateInvoicePDF = async (
   themeColor: string = '#3B82F6',
   logoUrl?: string | null,
   themeGradient?: string,
-  options: PDFGenerationOptions = {}
+  options: PDFGenerationOptions = {},
+  showIssueDate: boolean = true,
+  showDueDate: boolean = true
 ) => {
   const {
     filename = `invoice-${invoice.invoiceNo}.pdf`,
@@ -68,7 +70,7 @@ export const generateInvoicePDF = async (
     tempDiv.style.textAlign = language === 'en' ? 'left' : 'right';
     
     // Generate HTML content with page break considerations
-    tempDiv.innerHTML = generateInvoiceHTML(invoice, language, sellerInfo, buyerInfo, themeColor, optimizedLogoUrl, themeGradient, t);
+    tempDiv.innerHTML = generateInvoiceHTML(invoice, language, sellerInfo, buyerInfo, themeColor, optimizedLogoUrl, themeGradient, t, showIssueDate, showDueDate);
     
     document.body.appendChild(tempDiv);
     
@@ -210,7 +212,9 @@ const generateInvoiceHTML = (
   themeColor: string = '#3B82F6',
   logoUrl?: string | null,
   themeGradient?: string,
-  t?: (key: keyof typeof translations.en) => string
+  t?: (key: keyof typeof translations.en) => string,
+  showIssueDate: boolean = true,
+  showDueDate: boolean = true
 ): string => {
   // Default translation function if none provided
   const translate = t || ((key: keyof typeof translations.en) => translations.en[key]);
@@ -280,8 +284,8 @@ const generateInvoiceHTML = (
                   </table>
                 </td>
                 <td style="width: 30%; text-align: ${language === 'en' ? 'right' : 'left'}; vertical-align: top; padding-top: 10px;">
-                  <p style="margin: 0; font-size: 13px; margin-bottom: 5px;">${translate('issueDate')}: ${new Date(invoice.issueDate).toLocaleDateString()}</p>
-                  <p style="margin: 0; font-size: 13px;">${translate('dueDate')}: ${new Date(invoice.dueDate).toLocaleDateString()}</p>
+                  ${showIssueDate ? `<p style="margin: 0; font-size: 13px; margin-bottom: 5px;">${translate('issueDate')}: ${new Date(invoice.issueDate).toLocaleDateString()}</p>` : ''}
+                  ${showDueDate ? `<p style="margin: 0; font-size: 13px;">${translate('dueDate')}: ${new Date(invoice.dueDate).toLocaleDateString()}</p>` : ''}
                 </td>
               </tr>
             </table>

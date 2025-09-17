@@ -130,6 +130,8 @@ export interface SidebarSettings {
   discountType: 'none' | 'percentage' | 'fixed';
   discountValue: number;
   currency: string;
+  showIssueDate: boolean;
+  showDueDate: boolean;
 }
 
 export interface ColorTheme {
@@ -171,6 +173,8 @@ export interface InvoicePreviewProps {
   themeColor: string;
   themeGradient: string;
   logoUrl?: string | null;
+  showIssueDate?: boolean;
+  showDueDate?: boolean;
 }
 
 export interface LayoutProps {
