@@ -104,12 +104,6 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
 
             {/* Desktop Navigation */}
             <nav className={`hidden lg:flex items-center ${language === 'en' ? 'space-x-8' : 'gap-8'}`}>
-              <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                {t('features')}
-              </a>
-              <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                {t('howItWorks')}
-              </a>
               <a href="/tutorial" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Tutorial
               </a>
@@ -177,20 +171,6 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                       <span className="text-lg font-semibold">{t('appTitle')}</span>
                     </div>
                     <nav className="flex-1 flex flex-col gap-4 p-4">
-                      <a 
-                        href="#features" 
-                        className="text-lg font-medium py-3 px-2 hover:bg-accent rounded-md transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {t('features')}
-                      </a>
-                      <a 
-                        href="#how-it-works" 
-                        className="text-lg font-medium py-3 px-2 hover:bg-accent rounded-md transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {t('howItWorks')}
-                      </a>
                       <a 
                         href="/tutorial" 
                         className="text-lg font-medium py-3 px-2 hover:bg-accent rounded-md transition-colors"
@@ -553,8 +533,6 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">{t('product')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#features" className="hover:text-foreground transition-colors block py-1">{t('features')}</a></li>
-                <li><a href="#how-it-works" className="hover:text-foreground transition-colors block py-1">{t('howItWorksTitle')}</a></li>
                 <li><a href="/tutorial" className="hover:text-foreground transition-colors block py-1">Tutorial</a></li>
                 <li><a href="/blog" className="hover:text-foreground transition-colors block py-1">Blog</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-foreground transition-colors text-left py-1">{t('newInvoice')}</button></li>
