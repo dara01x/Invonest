@@ -110,6 +110,9 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 {t('howItWorks')}
               </a>
+              <a href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                About
+              </a>
               <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 {t('contact')}
               </a>
@@ -181,6 +184,13 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {t('howItWorks')}
+                      </a>
+                      <a 
+                        href="/about" 
+                        className="text-lg font-medium py-3 px-2 hover:bg-accent rounded-md transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        About
                       </a>
                       <a 
                         href="#contact" 
@@ -526,7 +536,16 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                 <li><a href="#features" className="hover:text-foreground transition-colors block py-1">{t('features')}</a></li>
                 <li><a href="#how-it-works" className="hover:text-foreground transition-colors block py-1">{t('howItWorksTitle')}</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-foreground transition-colors text-left py-1">{t('newInvoice')}</button></li>
+                <li><a href="/about" className="hover:text-foreground transition-colors block py-1">About Us</a></li>
+                <li><a href="/contact" className="hover:text-foreground transition-colors block py-1">Contact</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Legal</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="/privacy-policy" className="hover:text-foreground transition-colors block py-1">{t('privacyPolicy')}</a></li>
+                <li><a href="/terms" className="hover:text-foreground transition-colors block py-1">Terms & Conditions</a></li>
               </ul>
             </div>
 
@@ -548,7 +567,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span className="break-all">Daramistefa30@gmail.com</span>
+                  <span className="break-all">invonest01x@gmail.com</span>
                 </div>
               </div>
             </div>

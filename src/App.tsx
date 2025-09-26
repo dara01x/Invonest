@@ -13,6 +13,9 @@ import { initializeGA4 } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Invoice from "./pages/Invoice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -44,7 +47,10 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/invoice" element={<Invoice />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms" element={<Terms />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>

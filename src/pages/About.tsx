@@ -1,65 +1,35 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Shield, Lock, Eye, Server, Users, Cookie, Baby, FileText, Mail, Phone } from "lucide-react";
+import { ArrowLeft, User, Zap, Shield, Star, Heart, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
 
-export default function PrivacyPolicy() {
+export default function About() {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 
-  const sections = [
+  const features = [
     {
-      icon: Shield,
-      title: t('informationWeCollect'),
-      content: t('informationWeCollectDesc')
-    },
-    {
-      icon: Server,
-      title: t('localDataProcessing'),
-      content: t('localDataProcessingDesc')
-    },
-    {
-      icon: Lock,
-      title: t('noDataStorage'),
-      content: t('noDataStorageDesc')
-    },
-    {
-      icon: Eye,
-      title: t('analyticsAndTracking'),
-      content: t('analyticsAndTrackingDesc')
-    },
-    {
-      icon: Users,
-      title: t('thirdPartyServices'),
-      content: t('thirdPartyServicesDesc')
+      icon: Zap,
+      title: "Super Fast",
+      description: "Generate professional invoices in under 2 minutes with our intuitive interface"
     },
     {
       icon: Shield,
-      title: t('dataSecurity'),
-      content: t('dataSecurityDesc')
+      title: "100% Free Forever",
+      description: "No hidden costs, no watermarks, no limitations. Completely free with no signup required"
     },
     {
-      icon: Users,
-      title: t('userRights'),
-      content: t('userRightsDesc')
+      icon: Star,
+      title: "Multi-Language Support",
+      description: "Create invoices in English, Arabic, and Kurdish with perfect RTL/LTR formatting"
     },
     {
-      icon: Cookie,
-      title: t('cookies'),
-      content: t('cookiesDesc')
-    },
-    {
-      icon: Baby,
-      title: t('childrenPrivacy'),
-      content: t('childrenPrivacyDesc')
-    },
-    {
-      icon: FileText,
-      title: t('changesPolicy'),
-      content: t('changesPolicyDesc')
+      icon: Heart,
+      title: "Privacy Focused",
+      description: "All data processing happens locally in your browser. We don't store any of your information"
     }
   ];
 
@@ -109,64 +79,119 @@ export default function PrivacyPolicy() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl scale-110"></div>
               <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 shadow-2xl backdrop-blur-sm p-3 sm:p-4">
-                <Shield className="h-full w-full text-primary" />
+                <User className="h-full w-full text-primary" />
               </div>
             </div>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {t('privacyPolicyTitle')}
+            About Invonest
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('privacyPolicySubtitle')}
+            Professional invoice generator that's 100% free forever
           </p>
-          <div className="mt-6 text-sm text-muted-foreground">
-            <span className="font-medium">{t('effectiveDate')}:</span> September 12, 2025
+        </div>
+
+        {/* What is Invonest Section */}
+        <div className="space-y-6 sm:space-y-8 mb-12">
+          <Card className="border-2 hover:border-primary/20 transition-colors">
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">What is Invonest?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                Invonest is a modern, free invoice generator designed to help businesses and freelancers create professional invoices quickly and easily. 
+                Built with privacy in mind, all invoice creation happens locally in your browser - no data is ever sent to external servers.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-2 hover:border-primary/20 transition-colors">
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">What Problem Does It Solve?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                Many invoice generators are expensive, require subscriptions, or compromise your data privacy. Invonest solves these problems by providing 
+                a completely free, privacy-focused solution that works entirely in your browser. Whether you're a small business in Iraq, a freelancer 
+                working with international clients, or anyone who needs professional invoices, Invonest makes it simple and secure.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Key Features Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center">Key Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <Card key={index} className="border-2 hover:border-primary/20 transition-colors">
+                <CardHeader>
+                  <CardTitle className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-lg sm:text-xl`}>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                      <feature.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <span>{feature.title}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
 
-        {/* Privacy Policy Sections */}
-        <div className="space-y-6 sm:space-y-8">
-          {sections.map((section, index) => (
-            <Card key={index} className="border-2 hover:border-primary/20 transition-colors">
-              <CardHeader>
-                <CardTitle className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-xl sm:text-2xl`}>
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <section.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-                  </div>
-                  <span>{section.title}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                  {section.content}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Who Built It Section */}
+        <div className="mb-12">
+          <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
+            <CardHeader>
+              <CardTitle className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-xl sm:text-2xl`}>
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-primary/20">
+                  <User className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+                </div>
+                <span>Who Built It?</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
+                Invonest was built by <strong>Dara Mustafa</strong>, a passionate developer from Duhok, Iraq. 
+                With a focus on creating tools that solve real-world problems, Dara designed Invonest to be the invoice generator 
+                he wished existed - completely free, privacy-focused, and supporting multiple languages including Kurdish.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                Having experienced the challenges of finding good, affordable business tools in the region, 
+                Dara made Invonest completely free and open to everyone, ensuring that businesses of all sizes can create professional invoices.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Contact Section */}
+        {/* Contact Info Section */}
+        <div className="mb-8">
           <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
             <CardHeader>
               <CardTitle className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-xl sm:text-2xl`}>
                 <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-primary/20">
                   <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
-                <span>{t('contactUs')}</span>
+                <span>Contact Information</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
-                {t('contactUsDesc')}
+                Have questions or suggestions? We'd love to hear from you!
               </p>
               <div className="space-y-3">
                 <div className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-muted-foreground`}>
-                  <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span className="break-all">+964 750 192 0671</span>
-                </div>
-                <div className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-muted-foreground`}>
                   <Mail className="h-4 w-4 flex-shrink-0" />
                   <span className="break-all">invonest01x@gmail.com</span>
+                </div>
+                <div className={`flex items-center ${language === 'en' ? 'space-x-3' : 'gap-3'} text-muted-foreground`}>
+                  <MapPin className="h-4 w-4 flex-shrink-0" />
+                  <span>Duhok, Iraq</span>
                 </div>
               </div>
             </CardContent>
@@ -214,10 +239,10 @@ export default function PrivacyPolicy() {
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className={`text-center ${language === 'en' ? '' : ''}`} dir={language === 'en' ? 'ltr' : 'rtl'}>
             <p className="text-sm text-muted-foreground">
-              © 2025 {t('appTitle')}. {t('allRightsReserved')}
+              © 2025 {t('appTitle')}. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground/80 mt-1">
-              {t('madeBy')} <span className="font-medium">Dara Mustafa</span>
+              Made by <span className="font-medium">Dara Mustafa</span>
             </p>
           </div>
         </div>
