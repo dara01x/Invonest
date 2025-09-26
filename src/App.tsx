@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/invoice" element={<Invoice />} />
+                    <Route path="/blog" element={<Blog />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />

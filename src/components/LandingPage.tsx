@@ -110,6 +110,9 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 {t('howItWorks')}
               </a>
+              <a href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Blog
+              </a>
               <a href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 About
               </a>
@@ -184,6 +187,13 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {t('howItWorks')}
+                      </a>
+                      <a 
+                        href="/blog" 
+                        className="text-lg font-medium py-3 px-2 hover:bg-accent rounded-md transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Blog
                       </a>
                       <a 
                         href="/about" 
@@ -535,6 +545,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#features" className="hover:text-foreground transition-colors block py-1">{t('features')}</a></li>
                 <li><a href="#how-it-works" className="hover:text-foreground transition-colors block py-1">{t('howItWorksTitle')}</a></li>
+                <li><a href="/blog" className="hover:text-foreground transition-colors block py-1">Blog</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-foreground transition-colors text-left py-1">{t('newInvoice')}</button></li>
                 <li><a href="/about" className="hover:text-foreground transition-colors block py-1">About Us</a></li>
                 <li><a href="/contact" className="hover:text-foreground transition-colors block py-1">Contact</a></li>
