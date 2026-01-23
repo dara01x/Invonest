@@ -535,6 +535,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="/tutorial" className="hover:text-foreground transition-colors block py-1">Tutorial</a></li>
                 <li><a href="/blog" className="hover:text-foreground transition-colors block py-1">Blog</a></li>
+                <li><a href="/faq" className="hover:text-foreground transition-colors block py-1">FAQ</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-foreground transition-colors text-left py-1">{t('newInvoice')}</button></li>
                 <li><a href="/about" className="hover:text-foreground transition-colors block py-1">About Us</a></li>
                 <li><a href="/contact" className="hover:text-foreground transition-colors block py-1">Contact</a></li>

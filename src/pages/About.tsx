@@ -98,10 +98,18 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl sm:text-2xl">What is Invonest?</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 Invonest is a modern, free invoice generator designed to help businesses and freelancers create professional invoices quickly and easily. 
-                Built with privacy in mind, all invoice creation happens locally in your browser - no data is ever sent to external servers.
+                Built with privacy in mind, all invoice creation happens locally in your browser - no data is ever sent to external servers or stored in any cloud database.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                Unlike traditional invoicing software that requires expensive subscriptions, complex setups, or compromises your privacy, Invonest provides a streamlined,
+                user-friendly solution that works instantly in your web browser. No downloads, no installations, no credit card required—just open the site and start creating.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                With support for multiple languages including English, Arabic, and Kurdish, Invonest serves a global audience while maintaining a special focus on 
+                underserved markets in the Middle East and Kurdistan regions where quality, affordable business tools are often hard to find.
               </p>
             </CardContent>
           </Card>
@@ -110,11 +118,54 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl sm:text-2xl">What Problem Does It Solve?</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                Many invoice generators are expensive, require subscriptions, or compromise your data privacy. Invonest solves these problems by providing 
-                a completely free, privacy-focused solution that works entirely in your browser. Whether you're a small business in Iraq, a freelancer 
-                working with international clients, or anyone who needs professional invoices, Invonest makes it simple and secure.
+                Many invoice generators are expensive, require subscriptions, or compromise your data privacy. Small businesses and freelancers, especially in developing
+                markets, often struggle to find affordable solutions that meet their needs. Invonest solves these critical problems:
+              </p>
+              <ul className="space-y-3 ml-6">
+                <li className="text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span><strong>Cost Barrier:</strong> Professional invoicing software can cost $10-50/month. For many freelancers and small businesses, 
+                  especially in regions with lower average incomes, this is prohibitive. Invonest is completely free forever.</span>
+                </li>
+                <li className="text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span><strong>Privacy Concerns:</strong> Traditional platforms store your sensitive business data on their servers. Invonest processes 
+                  everything locally in your browser, ensuring your client information, rates, and business details remain private.</span>
+                </li>
+                <li className="text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span><strong>Language Support:</strong> Most invoicing tools only support English or major languages. Invonest supports Kurdish (Sorani),
+                  Arabic, and English with proper right-to-left (RTL) text formatting, serving millions who were previously underserved.</span>
+                </li>
+                <li className="text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span><strong>Complexity:</strong> Many invoice generators are overcomplicated with features most users don't need. Invonest focuses 
+                  on simplicity—create, customize, download. No learning curve required.</span>
+                </li>
+                <li className="text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span><strong>Accessibility:</strong> No account creation, no email verification, no payment setup. Anyone with a web browser can 
+                  create professional invoices in seconds, making it accessible to everyone regardless of location or technical expertise.</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-2 hover:border-primary/20 transition-colors">
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">Our Mission</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                Our mission is to democratize access to professional business tools by providing a completely free, privacy-focused invoicing solution 
+                that works for everyone, everywhere. We believe that every freelancer, entrepreneur, and small business owner deserves access to quality 
+                tools regardless of their location or budget.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                By removing cost barriers and respecting user privacy, we empower businesses to present themselves professionally, get paid faster,
+                and grow their operations without worrying about subscription fees or data security.
               </p>
             </CardContent>
           </Card>
