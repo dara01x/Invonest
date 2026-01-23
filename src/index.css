@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
+/* Ezoic Ads Styles */
+@import './styles/ezoic-ads.css';
+
 /* Rabar_042 Font for Arabic and Kurdish */
 @font-face {
   font-family: 'Rabar_042';

@@ -80,6 +80,17 @@ export default function BlogPost() {
                 ))}
               </div>
 
+              {/* Author Info */}
+              <div className="flex items-center gap-3 p-4 bg-muted rounded-lg mb-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-lg">
+                  {post.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">{post.author}</p>
+                  <p className="text-sm text-muted-foreground">{post.authorBio}</p>
+                </div>
+              </div>
+
               {post.description && (
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {post.description}
