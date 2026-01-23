@@ -513,7 +513,7 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       {/* Footer */}
       <footer id="contact" className="border-t bg-muted/30 py-8 sm:py-10 lg:py-12">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
             <div className="space-y-4 sm:col-span-2 lg:col-span-1">
               <div className={`flex items-center ${language === 'en' ? 'space-x-4' : 'gap-4'}`}>
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 p-1">
@@ -542,19 +542,18 @@ export const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">Legal</h4>
+              <h4 className="font-semibold text-foreground">Resources</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/privacy-policy" className="hover:text-foreground transition-colors block py-1">{t('privacyPolicy')}</a></li>
-                <li><a href="/terms" className="hover:text-foreground transition-colors block py-1">Terms & Conditions</a></li>
+                <li><a href="/invoice-guide" className="hover:text-foreground transition-colors block py-1">Invoice Guide</a></li>
+                <li><a href="/freelancing-tips" className="hover:text-foreground transition-colors block py-1">Freelancing Tips</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-semibold text-foreground">{t('languages')}</h4>
+              <h4 className="font-semibold text-foreground">Legal</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="py-1">{t('englishLang')} (LTR)</li>
-                <li className="py-1">{t('arabicLang')} (RTL)</li>
-                <li className="py-1">{t('kurdishLang')} (RTL)</li>
+                <li><a href="/privacy-policy" className="hover:text-foreground transition-colors block py-1">{t('privacyPolicy')}</a></li>
+                <li><a href="/terms" className="hover:text-foreground transition-colors block py-1">Terms & Conditions</a></li>
               </ul>
             </div>
 

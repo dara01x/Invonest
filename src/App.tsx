@@ -19,6 +19,8 @@ import Terms from "./pages/Terms";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Tutorial from "./pages/Tutorial";
+import InvoiceGuide from "./pages/InvoiceGuide";
+import FreelancingTips from "./pages/FreelancingTips";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -53,6 +55,8 @@ const App = () => {
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/tutorial" element={<Tutorial />} />
+                    <Route path="/invoice-guide" element={<InvoiceGuide />} />
+                    <Route path="/freelancing-tips" element={<FreelancingTips />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
