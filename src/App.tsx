@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Tutorial from "./pages/Tutorial";
 import NotFound from "./pages/NotFound";
 
@@ -50,6 +51,7 @@ const App = () => {
                     <Route path="/" element={<Index />} />
                     <Route path="/invoice" element={<Invoice />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/tutorial" element={<Tutorial />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
