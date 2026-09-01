@@ -5,8 +5,14 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
+import { useSEO } from "@/components/SEO";
 
 export default function PrivacyPolicy() {
+  useSEO({
+    title: 'Privacy Policy',
+    description: 'How Invonest handles your data: invoices are generated locally in your browser and never uploaded. Details on analytics, advertising cookies and your choices.',
+  });
+
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 

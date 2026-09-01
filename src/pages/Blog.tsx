@@ -6,8 +6,14 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { blogPosts } from "@/lib/blogData";
+import { useSEO } from "@/components/SEO";
 
 const Blog = () => {
+  useSEO({
+    title: 'Invoicing and Freelancing Blog',
+    description: 'Practical guides on invoicing, pricing, contracts, taxes, bookkeeping and client management for freelancers and small business owners.',
+  });
+
   const navigate = useNavigate();
   const { t, dir } = useLanguage();
 

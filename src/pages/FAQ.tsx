@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSEO } from "@/components/SEO";
 
 interface FAQItem {
   question: string;
@@ -186,6 +187,20 @@ export default function FAQ() {
 
   const categories = Array.from(new Set(faqs.map(faq => faq.category)));
 
+  useSEO({
+    title: 'Frequently Asked Questions',
+    description: 'Answers about how Invonest works: pricing, privacy, supported languages and currencies, PDF export, offline use and what happens to your invoice data.',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    },
+  });
+
   return (
     <Layout>
       <div className="min-h-screen bg-background" dir={language === 'en' ? 'ltr' : 'rtl'}>
@@ -256,13 +271,14 @@ export default function FAQ() {
                             )}
                           </CardTitle>
                         </CardHeader>
-                        {isOpen && (
-                          <CardContent>
-                            <p className="text-muted-foreground leading-relaxed">
-                              {faq.answer}
-                            </p>
-                          </CardContent>
-                        )}
+                        {/* Always rendered, toggled with `hidden`, so the
+                            answers are present in the HTML for crawlers
+                            rather than only appearing on click. */}
+                        <CardContent hidden={!isOpen} aria-hidden={!isOpen}>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </CardContent>
                       </Card>
                     );
                   })}

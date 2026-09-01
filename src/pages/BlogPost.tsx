@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { renderMarkdown } from "@/lib/markdown";
 import { blogPosts } from "@/lib/blogData";
+import { useSEO, SITE_URL } from "@/components/SEO";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +15,35 @@ export default function BlogPost() {
   const { language } = useLanguage();
 
   const post = blogPosts.find(p => p.id === slug);
+
+  useSEO({
+    title: post?.title ?? 'Article Not Found',
+    description: post?.description,
+    type: 'article',
+    noIndex: !post,
+    structuredData: post
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": post.title,
+          "description": post.description,
+          "datePublished": post.date,
+          "dateModified": post.date,
+          "inLanguage": "en",
+          "keywords": post.tags.join(', '),
+          "author": { "@type": "Organization", "name": post.author },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Invonest",
+            "logo": { "@type": "ImageObject", "url": `${SITE_URL}/logo/Icon.png` }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/blog/${post.id}`
+          }
+        }
+      : undefined,
+  });
 
   if (!post) {
     return (

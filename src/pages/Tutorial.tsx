@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSEO } from "@/components/SEO";
 
 // Simple Progress component for the tutorial
 const Progress = ({ value = 0, className = "" }: { value?: number; className?: string }) => {
@@ -50,6 +51,11 @@ interface TutorialStep {
 }
 
 const Tutorial = () => {
+  useSEO({
+    title: 'Invonest Tutorial: Create Your First Invoice',
+    description: 'A step-by-step walkthrough of Invonest, from entering business details and line items to choosing a currency, switching languages and exporting your PDF.',
+  });
+
   const navigate = useNavigate();
   const { t, dir } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
@@ -693,18 +699,28 @@ const Tutorial = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  {currentTutorialStep.content}
-                  
-                  {currentTutorialStep.tip && (
-                    <div className="bg-yellow-50 dark:bg-yellow-950/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                      <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">💡 Quick Tip</h4>
-                      <p className="text-yellow-700 dark:text-yellow-300 text-sm">
-                        {currentTutorialStep.tip}
-                      </p>
-                    </div>
-                  )}
-                </div>
+                {/* Every step is rendered and inactive ones are hidden, so the
+                    full tutorial is present in the HTML for crawlers instead of
+                    just the step the visitor happens to be on. */}
+                {tutorialSteps.map((step, index) => (
+                  <div
+                    key={step.id}
+                    className="space-y-6"
+                    hidden={index !== currentStep}
+                    aria-hidden={index !== currentStep}
+                  >
+                    {step.content}
+
+                    {step.tip && (
+                      <div className="bg-yellow-50 dark:bg-yellow-950/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                        <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">💡 Quick Tip</h4>
+                        <p className="text-yellow-700 dark:text-yellow-300 text-sm">
+                          {step.tip}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

@@ -5,8 +5,14 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
+import { useSEO } from "@/components/SEO";
 
 export default function Terms() {
+  useSEO({
+    title: 'Terms of Service',
+    description: 'The terms that govern your use of Invonest, including acceptable use, intellectual property, disclaimers and limitations of liability.',
+  });
+
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 

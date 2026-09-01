@@ -9,6 +9,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useSEO } from "@/components/SEO";
 
 interface FormData {
   name: string;
@@ -18,6 +19,11 @@ interface FormData {
 }
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Us',
+    description: 'Questions, bug reports, feature requests or partnership enquiries: get in touch with the Invonest team and we will get back to you.',
+  });
+
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const { toast } = useToast();

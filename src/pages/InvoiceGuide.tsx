@@ -5,8 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, FileText, DollarSign, Calendar, Users, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSEO } from "@/components/SEO";
 
 export default function InvoiceGuide() {
+  useSEO({
+    title: 'The Complete Invoicing Guide',
+    description: 'What every invoice must contain, how to number and date them, which payment terms to use, and how to follow up on late payments without damaging the relationship.',
+  });
+
   const navigate = useNavigate();
   const { language } = useLanguage();
 

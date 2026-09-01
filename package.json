@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run prerender",
+    "prerender": "node scripts/prerender.mjs",
+    "verify": "node scripts/verify-build.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -53,6 +55,7 @@
     "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "postcss": "^8.5.6",
+    "puppeteer": "^24.10.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",

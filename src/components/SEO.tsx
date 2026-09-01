@@ -1,71 +1,89 @@
 /**
- * SEO Component for dynamic meta tag management
+ * SEO Component for dynamic meta tag management.
+ *
+ * Rendered inside each page so that every route publishes its own title,
+ * description and canonical URL. The prerenderer snapshots the DOM after
+ * this has run, so whatever is set here ends up in the static HTML that
+ * crawlers receive.
  */
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useLanguage } from '@/hooks/useLanguage';
+
+/** Canonical origin. Never derive this from window.location: during
+ *  prerendering the page is served from localhost. */
+export const SITE_URL = 'https://invonest.me';
 
 interface SEOProps {
   title?: string;
   description?: string;
   keywords?: string;
   image?: string;
-  url?: string;
+  /** Open Graph type; use "article" for blog posts. */
+  type?: 'website' | 'article';
+  /** Extra JSON-LD to publish alongside the site-level WebApplication node. */
+  structuredData?: Record<string, unknown>;
   noIndex?: boolean;
 }
 
-const SEO: React.FC<SEOProps> = ({
+/** Sets document metadata for the current route. Call once per page. */
+export const useSEO = ({
   title,
   description,
   keywords,
   image = '/logo/Logo-light-mode.png',
-  url = window.location.href,
+  type = 'website',
+  structuredData,
   noIndex = false
-}) => {
+}: SEOProps = {}) => {
   const { language, t } = useLanguage();
+  const { pathname } = useLocation();
+
+  // Canonical URL: absolute, no query string, no trailing slash.
+  const canonical = `${SITE_URL}${pathname === '/' ? '' : pathname.replace(/\/$/, '')}`;
+  const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
+  // Serialise so callers can pass an inline object without re-firing the effect
+  // on every render.
+  const structuredDataKey = structuredData ? JSON.stringify(structuredData) : '';
 
   useEffect(() => {
-    // Update document title
     const pageTitle = title || t('appTitle');
-    const fullTitle = `${pageTitle} | Invonest - Professional Invoice Generator`;
+    // Pages supply their own title; append the brand unless the title already
+    // carries it, so we never emit "About Invonest | Invonest".
+    const fullTitle = title
+      ? (title.includes('Invonest') ? title : `${title} | Invonest`)
+      : `${pageTitle} | Invonest - Professional Invoice Generator`;
     document.title = fullTitle;
 
-    // Update meta description
     const metaDescription = description || 'Create professional invoices instantly with Invonest. Supports Arabic, Kurdish, and English with RTL/LTR text direction.';
     updateMetaTag('description', metaDescription);
+    updateMetaTag('title', fullTitle);
+    updateMetaTag('keywords', keywords || getLocalizedKeywords(language));
 
-    // Update keywords
-    const metaKeywords = keywords || getLocalizedKeywords(language);
-    updateMetaTag('keywords', metaKeywords);
-
-    // Update language
     document.documentElement.lang = language;
     updateMetaTag('language', language);
 
-    // Update Open Graph tags
     updateMetaProperty('og:title', fullTitle);
     updateMetaProperty('og:description', metaDescription);
-    updateMetaProperty('og:image', `${window.location.origin}${image}`);
-    updateMetaProperty('og:url', url);
+    updateMetaProperty('og:image', absoluteImage);
+    updateMetaProperty('og:url', canonical);
+    updateMetaProperty('og:type', type);
     updateMetaProperty('og:locale', getOGLocale(language));
 
-    // Update Twitter tags
     updateMetaProperty('twitter:title', fullTitle);
     updateMetaProperty('twitter:description', metaDescription);
-    updateMetaProperty('twitter:image', `${window.location.origin}${image}`);
+    updateMetaProperty('twitter:image', absoluteImage);
 
-    // Update robots
-    const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
-    updateMetaTag('robots', robotsContent);
+    updateMetaTag('robots', noIndex ? 'noindex, nofollow' : 'index, follow');
+    updateCanonical(canonical);
+    updateStructuredData(metaDescription, language, structuredDataKey ? JSON.parse(structuredDataKey) : undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, description, keywords, absoluteImage, canonical, type, structuredDataKey, noIndex, language, t]);
+};
 
-    // Update canonical URL
-    updateCanonical(url);
-
-    // Update structured data
-    updateStructuredData(pageTitle, metaDescription, language);
-
-  }, [title, description, keywords, image, url, noIndex, language, t]);
-
-  return null; // This component doesn't render anything
+const SEO: React.FC<SEOProps> = (props) => {
+  useSEO(props);
+  return null;
 };
 
 // Helper functions
@@ -123,13 +141,20 @@ const getOGLocale = (language: string): string => {
   return locales[language as keyof typeof locales] || 'en_US';
 };
 
-const updateStructuredData = (title: string, description: string, language: string) => {
-  const structuredData = {
+const SITE_LD_ID = 'ld-site';
+const PAGE_LD_ID = 'ld-page';
+
+const updateStructuredData = (
+  description: string,
+  language: string,
+  pageData?: Record<string, unknown>
+) => {
+  writeJsonLd(SITE_LD_ID, {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Invonest",
     "description": description,
-    "url": window.location.origin,
+    "url": SITE_URL,
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web Browser",
     "inLanguage": language,
@@ -152,17 +177,25 @@ const updateStructuredData = (title: string, description: string, language: stri
       "Responsive design",
       "Free to use"
     ]
-  };
+  });
 
-  let scriptElement = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
-  if (scriptElement) {
-    scriptElement.textContent = JSON.stringify(structuredData);
-  } else {
+  const existingPageLd = document.getElementById(PAGE_LD_ID);
+  if (pageData) {
+    writeJsonLd(PAGE_LD_ID, pageData);
+  } else if (existingPageLd) {
+    existingPageLd.remove();
+  }
+};
+
+const writeJsonLd = (id: string, data: Record<string, unknown>) => {
+  let scriptElement = document.getElementById(id) as HTMLScriptElement | null;
+  if (!scriptElement) {
     scriptElement = document.createElement('script');
     scriptElement.type = 'application/ld+json';
-    scriptElement.textContent = JSON.stringify(structuredData);
+    scriptElement.id = id;
     document.head.appendChild(scriptElement);
   }
+  scriptElement.textContent = JSON.stringify(data);
 };
 
 export default SEO;

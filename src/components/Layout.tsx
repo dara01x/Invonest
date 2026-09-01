@@ -78,9 +78,11 @@ export const Layout = ({ children, onBackToLanding }: LayoutProps) => {
                     className="h-8 w-8 sm:h-10 sm:w-10 object-contain transition-transform hover:scale-110 duration-300"
                   />
                 </div>
-                <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent truncate">
+                {/* Brand, not the page heading: each page renders its own
+                    <h1>, and two h1s per page muddies the topic signal. */}
+                <span className="block text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent truncate">
                   {t('appTitle')}
-                </h1>
+                </span>
               </div>
             </div>
 

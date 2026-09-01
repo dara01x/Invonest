@@ -8,7 +8,6 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { SkipToContent } from "@/components/AccessibilityComponents";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { NavigationProvider } from "@/contexts/NavigationContext";
-import SEO from "@/components/SEO";
 import { initializeGA4 } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Invoice from "./pages/Invoice";
@@ -44,7 +43,6 @@ const App = () => {
             disableTransitionOnChange={false}
           >
             <TooltipProvider>
-              <SEO />
               <SkipToContent />
               <Toaster />
               <Sonner />

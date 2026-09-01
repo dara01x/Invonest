@@ -34,10 +34,19 @@ jobs:
           node-version: '20'
           cache: 'npm'
           
+      - name: Cache Puppeteer browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-puppeteer-${{ hashFiles('package-lock.json') }}
+
       - name: Install dependencies
         run: npm ci
-        
-      - name: Build
+
+      # Runs `vite build` then scripts/prerender.mjs, which writes a real
+      # index.html for every route. The step fails loudly if any route does
+      # not prerender, so a broken build is never deployed.
+      - name: Build and prerender
         run: npm run build
         
       - name: Setup Pages

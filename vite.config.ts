@@ -4,7 +4,9 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  // Must be absolute: prerendered pages live at nested paths
+  // (e.g. /blog/<slug>/index.html) and relative asset URLs would break there.
+  base: '/',
   server: {
     host: "::",
     port: 8080,

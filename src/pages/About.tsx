@@ -5,8 +5,14 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
+import { useSEO } from "@/components/SEO";
 
 export default function About() {
+  useSEO({
+    title: 'About Invonest',
+    description: 'Why we built a free, browser-based invoice generator with first-class Arabic and Kurdish support, and how Invonest keeps your billing data entirely on your device.',
+  });
+
   const { t, language } = useLanguage();
   const navigate = useNavigate();
 

@@ -5,8 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Lightbulb, Target, TrendingUp, Shield, Clock, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSEO } from "@/components/SEO";
 
 export default function FreelancingTips() {
+  useSEO({
+    title: 'Freelancing Tips for Getting Paid on Time',
+    description: 'Field-tested advice on setting rates, screening clients, writing contracts, managing scope and keeping cash flow steady as an independent freelancer.',
+  });
+
   const navigate = useNavigate();
   const { language } = useLanguage();
 

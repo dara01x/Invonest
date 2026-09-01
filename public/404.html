@@ -2,22 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Invonest</title>
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // https://github.com/rafrex/spa-github-pages
-    // This script redirects to the index.html page with the correct route
-    var pathSegmentsToKeep = 0;
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found | Invonest</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="This page could not be found. Browse the Invonest invoice generator, guides and blog instead.">
+  <link rel="icon" type="image/png" href="/logo/Icon.png">
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    main { max-width: 34rem; text-align: center; }
+    .code { font-size: 3.5rem; font-weight: 800; margin: 0; letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text; background-clip: text; color: transparent; }
+    h1 { font-size: 1.5rem; margin: 0.5rem 0 0.75rem; }
+    p { margin: 0 0 1.75rem; line-height: 1.6; color: #475569; }
+    nav { display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; }
+    a {
+      display: inline-block; padding: 0.6rem 1.1rem; border-radius: 0.625rem;
+      border: 1px solid #cbd5e1; background: #fff; color: #1e293b;
+      text-decoration: none; font-size: 0.9375rem; font-weight: 500;
+    }
+    a:hover { border-color: #2563eb; color: #2563eb; }
+    a.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+    a.primary:hover { background: #1d4ed8; color: #fff; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0b1220; color: #e2e8f0; }
+      p { color: #94a3b8; }
+      a { background: #111a2e; border-color: #24334d; color: #e2e8f0; }
+    }
+  </style>
 </head>
 <body>
+  <main>
+    <p class="code">404</p>
+    <h1>We couldn't find that page</h1>
+    <p>The page you're looking for may have been moved or never existed. Here's where most people go next.</p>
+    <nav>
+      <a class="primary" href="/invoice">Create an invoice</a>
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/invoice-guide">Invoicing guide</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </main>
 </body>
 </html>
