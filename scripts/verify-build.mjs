@@ -41,6 +41,21 @@ const MIME = {
 const server = http.createServer(async (req, res) => {
   const urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   const direct = path.join(dist, urlPath);
+
+  // GitHub Pages 301s /faq -> /faq/ when the path is a directory. Reproduce it
+  // so canonical/sitemap mismatches surface here instead of in Search Console.
+  if (!urlPath.endsWith('/')) {
+    try {
+      if ((await fsp.stat(direct)).isDirectory()) {
+        res.writeHead(301, { Location: urlPath + '/' });
+        res.end();
+        return;
+      }
+    } catch {
+      // not a directory; fall through
+    }
+  }
+
   for (const candidate of [direct, path.join(direct, 'index.html'), direct + '.html']) {
     try {
       const stat = await fsp.stat(candidate);
@@ -82,13 +97,13 @@ const fail = (msg) => {
 
 console.log('1. Every route returns 200 with crawlable content\n');
 for (const route of allRoutes()) {
-  const res = await fetch(origin + route.path);
+  const res = await fetch(origin + route.path, { redirect: 'follow' });
   const html = await res.text();
   const text = crawlableText(html);
   const title = (html.match(/<title>([^<]*)<\/title>/) || [, ''])[1];
   const canonical = (html.match(/<link rel="canonical" href="([^"]*)"/) || [, ''])[1];
   const description = (html.match(/<meta name="description" content="([^"]*)"/) || [, ''])[1];
-  const expectedCanonical = SITE_URL + (route.path === '/' ? '' : route.path);
+  const expectedCanonical = SITE_URL + (route.path.endsWith('/') ? route.path : route.path + '/');
 
   const problems = [];
   if (res.status !== 200) problems.push('status ' + res.status);

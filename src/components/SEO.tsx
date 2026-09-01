@@ -39,8 +39,11 @@ export const useSEO = ({
   const { language, t } = useLanguage();
   const { pathname } = useLocation();
 
-  // Canonical URL: absolute, no query string, no trailing slash.
-  const canonical = `${SITE_URL}${pathname === '/' ? '' : pathname.replace(/\/$/, '')}`;
+  // Canonical URL: absolute, no query string, always trailing-slashed.
+  // GitHub Pages serves prerendered routes from a directory index and 301s
+  // /faq -> /faq/, so the canonical must be the slashed form it actually
+  // serves; otherwise every page canonicalises to a URL that redirects.
+  const canonical = `${SITE_URL}${pathname.endsWith('/') ? pathname : pathname + '/'}`;
   const absoluteImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
   // Serialise so callers can pass an inline object without re-firing the effect
   // on every render.

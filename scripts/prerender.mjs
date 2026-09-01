@@ -203,7 +203,7 @@ async function writeSitemap(routes) {
     .map((r) =>
       [
         '  <url>',
-        '    <loc>' + SITE_URL + r.path + '</loc>',
+        '    <loc>' + SITE_URL + (r.path.endsWith('/') ? r.path : r.path + '/') + '</loc>',
         '    <lastmod>' + today + '</lastmod>',
         '    <changefreq>' + r.changefreq + '</changefreq>',
         '    <priority>' + r.priority + '</priority>',
