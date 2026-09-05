@@ -4507,5 +4507,449 @@ Remember: You became a freelancer for freedom and flexibility. Boundaries don't 
 Set boundaries. Communicate them clearly. Enforce them consistently. Watch your work quality, client satisfaction, and personal wellbeing all improve as a result.
 
 Your business will thrive when you protect the most important resource in it: you.`
+  },
+  {
+    id: "invoicing-clients-in-iraq-and-kurdistan",
+    title: "How to Invoice Clients in Iraq and the Kurdistan Region",
+    description: "A practical guide to billing clients in Baghdad, Erbil, Sulaymaniyah and Duhok: dual-currency pricing, which payment apps actually work, and why your invoice needs details Western templates leave out.",
+    date: "2026-09-05",
+    author: "Invonest Team",
+    authorBio: "The Invonest team builds invoicing tools from Duhok, Kurdistan Region of Iraq, with a focus on Arabic and Kurdish language support.",
+    tags: ["Iraq","Kurdistan","Invoicing","Payments"],
+    content: `Most invoicing advice online is written for freelancers billing clients in the US or Western Europe. Almost none of it survives contact with the Iraqi market. Payment terms work differently, currency is not a single decision, and the details that make an invoice acceptable to a company's accountant are not the ones a Western template asks for.
+
+This guide covers what actually matters when you invoice a client in Iraq or the Kurdistan Region.
+
+## Two Currencies, One Invoice
+
+Iraq runs on two currencies in daily practice: the Iraqi dinar (IQD) and the US dollar (USD). Which one your client expects depends on who they are.
+
+- **Government bodies and public-sector contracts** are usually settled in dinar.
+- **Private companies, NGOs, oil and gas contractors, and international organisations** frequently work in dollars.
+- **Retail and small business** trends toward dinar for small amounts and dollars for large ones.
+
+The mistake freelancers make is picking one and hoping. If you are not certain, ask before you invoice, not after.
+
+### Showing both currencies
+
+For larger invoices, showing both currencies removes friction. Put the contract currency as the primary total, and the converted amount underneath as a reference, with the rate and date you used:
+
+> Total: $1,200.00 USD
+> Equivalent: 1,572,000 IQD at 1,310 IQD/USD as of 5 September 2026
+
+State plainly which currency governs. Something like *"Payment due in USD. IQD equivalent shown for reference only."* prevents an argument three weeks later when the rate has moved.
+
+The dinar-dollar rate is not a single number in practice. There is an official rate and a parallel market rate, and they diverge. If your invoice converts between currencies, name the rate you used and where it came from. Vagueness here is where disputes start.
+
+## Payment Methods That Actually Work
+
+This is where Western templates fail hardest. An invoice footer saying "Pay by ACH or Zelle" is useless in Erbil.
+
+**Bank transfer.** Works, but slower and more paperwork-heavy than freelancers expect. Domestic transfers between Iraqi banks can take days. For international transfers into Iraq, correspondent banking relationships are limited and compliance checks are heavy. Build the delay into your terms.
+
+**Mobile wallets.** FIB (First Iraqi Bank), Zain Cash, FastPay and similar services have become the practical default for small and mid-sized payments, especially in the Kurdistan Region. If you accept one, put the exact account name and number on the invoice. Adoption varies by city and by client age, so do not assume.
+
+**Cash.** Still enormously common, including for substantial amounts. If you are paid in cash, issue a receipt and note it on your records. "Paid in cash on [date]" on a marked-paid copy of the invoice protects both sides.
+
+**Hawala.** Used widely for cross-border transfers, particularly to and from the diaspora. Whether you use it is your call, but be aware that it leaves a different paper trail than a bank transfer, and some corporate clients will not use it for accounting reasons.
+
+**International platforms.** PayPal does not operate normally for Iraqi accounts. Wise has limited coverage. Payoneer works for some. Do not put a payment method on your invoice that you have not personally tested end to end.
+
+The practical rule: list two payment options you have actually received money through, with complete details, and offer to arrange a third if the client prefers.
+
+## What Iraqi Clients Need on the Invoice
+
+Beyond the universal fields, corporate and institutional clients in Iraq often need:
+
+- **Your full legal name exactly as it appears on your ID or company registration.** Nicknames and shortened forms cause problems at the accounts desk.
+- **A company registration number** if you are registered. If you are an individual freelancer, say so explicitly rather than leaving the field blank.
+- **The client's full registered company name**, not the informal name people use. "Asiacell" versus the full registered entity matters for their books.
+- **A clear invoice number and date.** Sequential, no gaps.
+- **A description specific enough to justify the payment internally.** "Consulting services" will get bounced back. "Website redesign, phase 2: five page templates and mobile layouts, delivered 28 August 2026" will not.
+- **Contact details that work locally.** A phone number reachable on a local network, ideally with WhatsApp, does more than an email address.
+
+Tax treatment differs between federal Iraq and the Kurdistan Region, and rules change. If your client asks about tax withholding or wants a specific tax field on the invoice, ask them what their accountant requires and confirm with a local accountant rather than guessing. Do not copy a VAT line off a European template — it will not match anything.
+
+## Language: Which One, and Why It Matters
+
+You have three realistic options, and the choice signals something.
+
+**English only** is fine for international organisations, tech companies and NGOs. It is the default for a lot of professional work.
+
+**Arabic** is expected by many federal government bodies and traditional businesses, particularly in Baghdad, Basra and central Iraq.
+
+**Kurdish** matters in the Kurdistan Region. Erbil, Sulaymaniyah, Duhok and Halabja institutions increasingly conduct business in Kurdish, and a Kurdish-language invoice signals that you are part of the local business community rather than an outsider billing into it.
+
+**Bilingual invoices solve this.** An invoice with Kurdish or Arabic alongside English satisfies the accountant who needs the local language and the manager who works in English. It also removes any ambiguity in the description of work.
+
+If you produce Arabic or Kurdish invoices, the text has to render correctly — right-to-left layout, properly joined letters, numbers in the right direction. A mangled Arabic invoice looks worse than an English one. This is a genuinely hard technical problem and most PDF tools get it wrong.
+
+## Payment Terms in Practice
+
+Net 30 is a Western convention that means little in a market where payment often depends on when the client's own receivables land.
+
+What works better:
+
+- **Ask for a deposit.** 30 to 50 percent up front is normal and not considered rude. For new clients it is the single most effective protection you have.
+- **Tie payments to milestones**, not calendar dates. "50% on approval of design, 50% on delivery of files" is enforceable in a way that "Net 30" is not.
+- **Put the due date as an actual date**, not a number of days. "Due 5 October 2026" removes the argument about when the clock started.
+- **Expect to follow up.** A polite WhatsApp message a few days after the due date is normal business practice here, not an escalation.
+- **Build relationships before you need them.** In a market where a lot runs on trust and personal reputation, the freelancer who has met the client in person gets paid before the one who has not.
+
+## Getting Paid Late, and What To Do
+
+Late payment is common and usually not malicious. The most frequent causes are the client waiting on their own payment, a signature missing from an internal approval chain, or the invoice sitting in someone's inbox.
+
+Escalate gently and in order:
+
+1. A short message to your day-to-day contact, referencing the invoice number and date.
+2. A resent copy of the invoice, in case it was genuinely lost.
+3. A direct ask about the internal approval status — often this reveals a missing signature you can help chase.
+4. A conversation with the person who signs off payments.
+
+Formal legal escalation is slow and expensive, and the practical remedy for most freelancers is stopping work until the outstanding balance clears. Say that clearly and early in your terms so it is not a surprise.
+
+## A Realistic Checklist
+
+Before you send an invoice to an Iraqi or Kurdistan Region client:
+
+- Currency agreed and stated, with the conversion rate named if you converted
+- Payment method you have personally tested, with complete account details
+- Your full legal name and, if applicable, registration number
+- Client's full registered company name
+- Sequential invoice number and an explicit due date
+- Work described specifically enough for their accountant
+- A locally reachable phone number
+- Language appropriate to the client, ideally bilingual
+- Deposit collected if this is a new relationship
+
+## The Broader Point
+
+Invoicing in Iraq is not harder than invoicing anywhere else. It is just different in ways that generic advice does not prepare you for. The freelancers who get paid reliably here are the ones who ask about currency before quoting, offer a payment method the client actually uses, describe their work in enough detail to clear an internal approval, and treat following up as routine rather than confrontational.
+
+None of that requires a different invoice. It requires an invoice built for this market rather than translated from one built for a different one.`
+  },
+  {
+    id: "what-an-arabic-invoice-actually-needs",
+    title: "What an Arabic-Language Invoice Actually Needs",
+    description: "Beyond translating the words: right-to-left layout, which numerals to use, date formats, name conventions, and the mistakes that make an Arabic invoice look unprofessional to a native reader.",
+    date: "2026-09-05",
+    author: "Invonest Team",
+    authorBio: "The Invonest team builds invoicing tools from Duhok, Kurdistan Region of Iraq, with a focus on Arabic and Kurdish language support.",
+    tags: ["Arabic","Invoicing","RTL","Localization"],
+    content: `Running your invoice template through a translator produces Arabic words in a layout designed for English. Native readers notice immediately, in the same way an English speaker notices a document where every line is centred and the dates are in the wrong order. It reads as careless.
+
+This is what actually changes when an invoice is in Arabic, and what most tools get wrong.
+
+## Direction Is Not Just Text Alignment
+
+Arabic is written right to left, and that governs the whole document, not just the sentences.
+
+**The page flips.** Your logo moves to the top right. The client's details move to the left. In a line items table, the description column sits on the right and the amount on the left — the reverse of an English invoice. Reading order runs right to left across the whole layout.
+
+**Tables mirror.** This is the part tools most often miss. They will render Arabic text correctly inside cells while leaving the column order in English sequence. The result is a document that is technically readable but feels wrong to anyone reading it naturally.
+
+**Alignment follows direction.** Labels align right. Numbers in an amount column typically align left in an RTL layout, which feels backwards until you have seen a few real invoices.
+
+**Mixed content stays coherent.** An Arabic invoice containing an English product name, a Latin-script company name, or an IBAN has bidirectional text. The Unicode bidirectional algorithm handles most of this correctly if your tool implements it — and produces scrambled output if it does not. An IBAN rendered backwards is not a cosmetic problem; it is an unpayable invoice.
+
+## Letters Have to Join
+
+This is the single most common technical failure, and it is immediately visible.
+
+Arabic letters change shape depending on their position in a word. The letter *ha* looks different at the start of a word, in the middle, at the end, and standing alone. Correct rendering joins them into connected words.
+
+When a tool fails at this, you get text that reads as disconnected letters in the wrong order — the Arabic equivalent of receiving an invoice that says "e c i o v n i". Native readers can sometimes decode it, but it destroys any impression of professionalism.
+
+If you are producing Arabic PDFs, test with a real Arabic sentence and have a native reader look at the output. Do not trust that it worked because characters appeared.
+
+## Which Numerals?
+
+Arabic has two numeral systems in common use, and picking the wrong one is a subtle tell.
+
+**Western Arabic numerals** (0 1 2 3 4 5 6 7 8 9) are what English uses. Despite the name, these are standard in business documents across much of the Arab world, including the Gulf and North Africa.
+
+**Eastern Arabic-Indic numerals** (٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩) are used in Egypt, Iraq, Iran and parts of the Levant, particularly in more traditional or government contexts.
+
+There is no universal right answer. Practical guidance:
+
+- **Default to Western numerals** for business invoices unless you know otherwise. They are more widely accepted and never actively wrong.
+- **Ask the client** if you are billing a government body or traditional institution in Iraq or Egypt.
+- **Be consistent.** Mixing both systems in one document looks like a bug, because it usually is one.
+- **Never use Arabic-Indic numerals in an IBAN, account number or reference code.** These need to be transcribable exactly.
+
+Numbers themselves stay left-to-right even inside right-to-left text. "١٢٣" reads one-two-three, not three-two-one. If your tool reverses digit order, it is broken.
+
+## Dates
+
+Three things go wrong with dates on Arabic invoices.
+
+**Format ambiguity.** 05/09/2026 is 5 September in most of the world and 9 May in the US. On an invoice with payment terms attached to it, this ambiguity is expensive. Write the month as a word, or use an unambiguous format.
+
+**Calendar systems.** The Gregorian calendar is standard for business across the Arab world. The Hijri (Islamic lunar) calendar appears in government and religious contexts, and some Saudi documents carry both. If a client asks for Hijri, they will tell you; do not add it speculatively.
+
+**Month names.** Arabic month names for the Gregorian calendar differ by region. The Levant and Iraq commonly use forms like كانون الثاني for January, while Egypt and the Gulf use يناير. Neither is wrong, but using the form your client's region does not use is another small signal of distance.
+
+## Names and Addresses
+
+**Name order.** Arabic names often follow a given name, father's name, grandfather's name, family name pattern. Do not restructure a client's name into "First Last" because your template has two fields. Use the name exactly as they gave it to you.
+
+**Honorifics matter more than in English business writing.** Where an English invoice says "John Smith", an Arabic one may reasonably carry a title. Follow the client's lead from how they signed their emails.
+
+**Company names are often not translated.** A registered company name is a legal identity. If the company is registered under an Arabic name, use the Arabic name. If it is registered in Latin script, keep it in Latin script even in an Arabic document. Translating a registered name creates a mismatch with their records.
+
+**Addresses do not always follow the Western structure.** Many addresses in the region are descriptive rather than numeric — a district, a nearby landmark, a building name. Do not force them into a street-number-postcode template that does not fit. A wrong-looking address field is not just cosmetic; it can hold up a payment approval.
+
+## Fonts
+
+Not every font that displays Arabic displays it well.
+
+**The font must actually support Arabic.** A font without Arabic glyphs will substitute, and you will get boxes, blank space, or a jarring visual mismatch mid-document.
+
+**It must support letter shaping**, meaning it needs the positional variants for each letter. A font with partial Arabic coverage can produce text that renders but looks subtly broken.
+
+**Line height needs more room than Latin text.** Arabic script has diacritics above and descenders below. Line spacing that looks tight and elegant in English will collide in Arabic.
+
+**Numerals should be consistent with your choice.** Some Arabic fonts default to Arabic-Indic numerals even when you typed Western ones.
+
+**Embed the font in the PDF.** If the font is not embedded, the reader's machine substitutes something else, and your carefully laid out invoice arrives looking like a different document.
+
+## A Practical Test
+
+Before you send an Arabic invoice to a real client, produce one with:
+
+- A full Arabic sentence in the description field
+- An English or Latin-script term mixed into that sentence
+- An IBAN or account number
+- A date
+- An amount with decimals
+- A long client name
+
+Then open the PDF on a different machine and, if you can, have a native Arabic reader look at it. Ask them one question: *does this look like a document a professional company would send?* That answer is worth more than any checklist.
+
+## Why This Matters Commercially
+
+An invoice is often the only document a client's finance department ever sees from you. If it is well made in their language, it signals that you take the relationship seriously and that working with you will not create extra work for them.
+
+If it arrives with broken letter joining, a mirrored IBAN, and a date nobody can interpret, it signals the opposite — and it lands on the desk of the person who decides when you get paid.
+
+Getting this right is not about linguistic perfection. It is about the invoice looking like it was made for the person receiving it, because it was.`
+  },
+  {
+    id: "kurdish-and-arabic-invoices-in-pdf",
+    title: "Why Arabic and Kurdish Text Breaks in PDF Invoices (and How to Fix It)",
+    description: "A technical explanation of the three separate problems that mangle right-to-left text in generated PDFs: bidirectional ordering, letter shaping, and font embedding, plus what actually solves each one.",
+    date: "2026-09-05",
+    author: "Invonest Team",
+    authorBio: "The Invonest team builds invoicing tools from Duhok, Kurdistan Region of Iraq, with a focus on Arabic and Kurdish language support.",
+    tags: ["RTL","PDF","Kurdish","Arabic","Technical"],
+    content: `If you have ever generated a PDF invoice containing Arabic or Kurdish and received back a jumble of disconnected letters in reverse order, you have run into one of three distinct technical problems. They have different causes and different fixes, and diagnosing which one you have saves a lot of wasted effort.
+
+This is a technical article. If you just want invoices that work, the short version is at the end.
+
+## The Three Problems
+
+Text that looks correct in your browser and breaks in the PDF has usually hit one of these:
+
+1. **Bidirectional ordering** — the characters are correct but arranged in the wrong visual order
+2. **Letter shaping** — the characters are in the right order but not joined into words
+3. **Font embedding** — the glyphs are not in the PDF at all
+
+They can occur together, which is why the output sometimes looks catastrophically wrong rather than subtly off.
+
+## Problem 1: Bidirectional Ordering
+
+Text has two orders: **logical** (the sequence characters are stored in) and **visual** (the sequence they are drawn in). For English these are identical. For Arabic and Kurdish they are not.
+
+The Unicode Bidirectional Algorithm resolves logical order into visual order. It handles the hard cases: an Arabic sentence containing an English word, a phone number inside Arabic text, punctuation at a direction boundary.
+
+Browsers implement this algorithm. **Most PDF generation libraries do not.** They draw characters in storage order, left to right, which produces reversed Arabic.
+
+The tell: the letters are individually correct and correctly shaped, but the word reads backwards.
+
+The fix is to run text through a bidi implementation before handing it to the PDF library, so you pass already-reordered visual-order text. You cannot skip this by setting an alignment property — alignment moves the text block, it does not reorder characters within it.
+
+A subtlety worth knowing: numbers embedded in RTL text stay left-to-right. A naive "just reverse the string" fix breaks every account number and amount on the invoice. This is why string reversal is not a solution, only a different bug.
+
+## Problem 2: Letter Shaping
+
+Arabic script is cursive. Every letter has up to four forms depending on its position: isolated, initial, medial, and final. Correct text joins these into connected words.
+
+Unicode stores the abstract letter, not the positional form. Something has to select the right shape based on neighbours — normally the font's OpenType shaping tables, executed by a shaping engine.
+
+Browsers ship a shaping engine. **PDF libraries generally do not.** You get isolated letter forms sitting next to each other, unconnected.
+
+The tell: text runs in the right direction but looks like separated letters rather than words.
+
+There are two routes to fixing this. Either use a rendering path that includes a shaping engine, or pre-shape the text by substituting the correct positional forms before drawing. Pre-shaping is fiddly and has edge cases around ligatures — the *lam-alef* combination in particular is a mandatory ligature that has to be handled as a unit, not as two letters.
+
+### Kurdish adds its own characters
+
+Kurdish written in Arabic script (Sorani) uses letters that Arabic does not:
+
+- **ڕ** — r with a V below
+- **ڵ** — l with a V above
+- **ۆ** — o
+- **ێ** — e
+- **ک** and **ی** — Kurdish uses the Persian-style keheh and yeh rather than the Arabic kaf and yeh
+
+This matters practically: **a font with complete Arabic coverage may still lack Kurdish letters.** You get correct Arabic and missing boxes wherever a Kurdish-specific character appears. Anyone building for the Kurdistan Region needs to test with Kurdish text specifically, not assume Arabic support covers it.
+
+Kurdish also has vowels written as full letters where Arabic uses optional diacritics, so Kurdish text tends to be longer than the equivalent Arabic and needs more horizontal room in table cells.
+
+## Problem 3: Font Embedding
+
+PDF is not HTML. It does not fetch fonts at display time. Whatever glyphs the document needs must be inside the file, or the reader substitutes something else.
+
+Standard PDF base fonts contain no Arabic glyphs at all. If you do not embed a font with Arabic and Kurdish coverage, the reader falls back — and the fallback varies by machine. Your invoice looks fine on your computer and arrives as empty boxes on the client's.
+
+The tell: boxes, blank space, or question marks instead of characters. Or, more insidiously, correct rendering on your machine and broken rendering on theirs.
+
+The fix is to embed a font that covers the full range you need. Subsetting keeps file size manageable, but the subset must include every character actually used — a subsetter that only walked your Latin text will drop the Arabic.
+
+Fonts worth knowing for this region include **Rabar**, **Speda** and **Rudaw**, which were designed for Kurdish and carry the Kurdish-specific letters, alongside broader families like Noto Sans Arabic. Coverage varies, so verify rather than assume.
+
+## Why the HTML-to-Canvas Route Is Tempting and Imperfect
+
+A common approach is to render the invoice as HTML, screenshot it with a canvas library, and place the image into a PDF. Since the browser handles bidi and shaping correctly, the text looks right.
+
+It works, and for many cases it is the pragmatic choice. But understand the tradeoffs:
+
+- **The text is no longer text.** It cannot be selected, copied, or searched. A client cannot copy your IBAN out of the invoice.
+- **It is not accessible.** Screen readers get nothing.
+- **File size grows** substantially compared to a text-based PDF.
+- **Resolution is fixed** at capture time. Zooming reveals pixels.
+- **Machine-readable extraction fails**, which matters if the client's accounting system parses invoices.
+
+For an invoice specifically, the copy-paste problem is the serious one. Payment details that cannot be copied get transcribed by hand, and hand-transcribed IBANs get typos.
+
+## How to Diagnose Your Own Output
+
+Generate a test PDF containing one line of Arabic, one line of Kurdish including ڕ ڵ ۆ ێ, an IBAN, a date, and a decimal amount. Then:
+
+- **Boxes or blanks?** Font embedding problem.
+- **Correct shapes, backwards words?** Bidirectional ordering problem.
+- **Right direction, disconnected letters?** Shaping problem.
+- **Arabic fine, Kurdish letters missing?** Font lacks Kurdish coverage.
+- **Numbers reversed?** Something is naively reversing strings.
+- **Fine on your machine, broken elsewhere?** Font not embedded, only installed locally.
+- **Cannot select the text?** You are on the image-based path.
+
+## The Short Version
+
+If you are choosing an invoicing tool rather than building one, test it before you trust it. Generate an invoice with real Arabic or Kurdish content, open it on a different computer, and try to select and copy the account number.
+
+Most tools that claim multilingual support have only translated their interface labels. The invoice output is where it either works or does not, and that is the document your client actually receives.
+
+If you are building this yourself: handle bidi ordering, handle shaping, embed a font with the coverage you need, and test with Kurdish rather than assuming Arabic support is sufficient. There is no single library switch that solves all three.`
+  },
+  {
+    id: "invoicing-gulf-clients-vat-basics",
+    title: "Invoicing Gulf Clients: What Freelancers Need to Know About VAT",
+    description: "Which GCC countries have VAT and at what rate, what a compliant tax invoice generally contains, when Arabic is expected, and why cross-border service work often shifts the tax obligation to your client.",
+    date: "2026-09-05",
+    author: "Invonest Team",
+    authorBio: "The Invonest team builds invoicing tools from Duhok, Kurdistan Region of Iraq, with a focus on Arabic and Kurdish language support.",
+    tags: ["Gulf","VAT","Invoicing","Compliance"],
+    content: `Freelancers who start billing clients in Saudi Arabia, the UAE or Qatar usually discover the tax questions after sending the first invoice, when the client's finance team sends it back asking for fields the freelancer has never heard of.
+
+This is an orientation, not tax advice. Rules change, and your obligations depend on where you are resident, where your client is, and whether you are registered. Confirm anything that affects your money with a qualified accountant or the relevant tax authority.
+
+## Which Gulf Countries Have VAT
+
+The GCC agreed a common VAT framework, but implementation has been staggered and rates have moved. As a general picture:
+
+- **Saudi Arabia** — VAT in force. The rate was introduced at 5% and later raised to 15%.
+- **United Arab Emirates** — VAT in force at 5%.
+- **Bahrain** — VAT in force, introduced at 5% and later raised to 10%.
+- **Oman** — VAT in force at 5%.
+- **Qatar** — has signed the framework but had not implemented VAT at the time of writing.
+- **Kuwait** — has signed the framework but had not implemented VAT at the time of writing.
+
+Rates and implementation dates do change. Check the current position with the relevant authority before relying on a number: ZATCA in Saudi Arabia, the Federal Tax Authority in the UAE, the National Bureau for Revenue in Bahrain, and the Oman Tax Authority.
+
+## Does This Apply to You?
+
+The important thing many freelancers get wrong: **VAT registration is generally an obligation of businesses established or making taxable supplies in the country concerned, above a registration threshold.**
+
+A freelancer resident outside the GCC, invoicing a GCC company for services delivered remotely, is usually not charging that country's VAT on their invoice. The transaction typically falls under a **reverse charge** mechanism, where the recipient business accounts for the VAT itself rather than paying it to you.
+
+This is why a Gulf client may ask you to state something like *"Reverse charge applies"* or *"VAT to be accounted for by the recipient"* on the invoice. They are not asking you to register for tax. They are asking for wording their accounting system needs.
+
+If you are resident in a GCC country, or you have a presence there, the picture is different and thresholds apply. That is the point at which you need a local accountant rather than an article.
+
+## What a Tax Invoice Generally Contains
+
+Where a full tax invoice is required, the common expectations across GCC VAT regimes include:
+
+- The words identifying it as a tax invoice
+- A unique sequential invoice number
+- The date of issue, and the date of supply if different
+- The supplier's name, address and tax registration number
+- The customer's name, address and tax registration number
+- A description of the goods or services
+- The quantity and unit price
+- The taxable amount, excluding tax
+- The tax rate applied and the tax amount
+- The total payable including tax
+- The currency, and conversion details if the invoice is not in local currency
+
+Requirements differ in detail between countries, and simplified invoices with fewer fields are permitted below certain value thresholds. Treat the list above as the shape of what is expected, not a compliance checklist.
+
+## The TRN Is the Field People Miss
+
+Every GCC VAT regime issues registered businesses a tax registration number — the TRN in the UAE, the VAT registration number in Saudi Arabia, and equivalents elsewhere.
+
+Two practical points:
+
+**Your client's number belongs on the invoice.** If they are registered and you omit it, their finance team will send the invoice back. Ask for it when you agree the work, not when you invoice.
+
+**If you are not registered, do not invent a field.** Leaving a blank labelled "VAT number" looks like an error. It is cleaner to state your position: *"Supplier not registered for VAT"* or *"Reverse charge applies — VAT to be accounted for by the recipient"*. Ask the client which wording their system expects.
+
+## E-Invoicing Is Changing the Picture
+
+Saudi Arabia has moved furthest, with a phased e-invoicing programme requiring structured electronic invoices rather than PDFs, including machine-readable data and QR codes, integrated with the tax authority's systems. Other countries in the region have announced or begun similar programmes.
+
+For a freelancer outside the country invoicing under reverse charge, these obligations generally sit with the local registered business, not with you. But it explains why Gulf clients are increasingly particular about invoice fields: their own compliance depends on receiving complete data.
+
+The practical implication is that vague invoices get rejected more often than they used to. Specific descriptions, complete party details and correct numbers are no longer just good manners.
+
+## Arabic on Gulf Invoices
+
+Arabic is the official language across the GCC, and tax regulations in the region have language requirements — Saudi Arabia's e-invoicing rules in particular require Arabic, with other languages permitted alongside it.
+
+The safe approach for a freelancer is a **bilingual invoice**: Arabic and English together. It satisfies language expectations, it is readable by everyone in the client's organisation, and it removes ambiguity about what you delivered.
+
+If you produce Arabic invoices, the rendering has to be correct — right-to-left layout, properly joined letters, numbers that read in the right direction. An invoice with mangled Arabic creates more problems than an English-only one, because it looks like a compliance document that has been corrupted.
+
+## Currency
+
+Most GCC currencies are pegged to the US dollar, which makes conversion more stable than in floating-rate markets. The Kuwaiti dinar is pegged to a currency basket rather than the dollar directly.
+
+Practical guidance:
+
+- **Agree the invoice currency before you quote.** Do not assume dollars.
+- **If you convert**, state the rate and the date you used it.
+- **Ask who pays bank charges.** International transfers carry fees, and an unstated assumption here produces short payments that are annoying to chase.
+- **Check what your bank actually receives.** The amount that lands is often less than the amount sent.
+
+## A Sensible Approach
+
+If you are a freelancer starting to work with Gulf clients:
+
+1. **Ask the client what their finance team needs on the invoice.** They know their own requirements, and this single question prevents most rejections.
+2. **Get their tax registration number up front.**
+3. **State your own tax status explicitly** rather than leaving fields blank.
+4. **Ask whether reverse charge wording is required** and use whatever they specify.
+5. **Send bilingual invoices** where Arabic is expected.
+6. **Confirm with an accountant** if the amounts are significant or if you have any presence in the country.
+
+## The Honest Summary
+
+For most freelancers outside the GCC doing remote service work, the tax mechanics are simpler than they first appear: you generally do not charge local VAT, the client accounts for it, and your job is to put the right wording and the right numbers on a clear invoice.
+
+What trips people up is not tax law. It is sending an invoice missing the client's registration number, or with a description too vague to approve, or with Arabic text that arrived broken — and then waiting three weeks to find out why nobody paid it.
+
+Ask what they need before you invoice. It is a one-line email that saves a month.`
   }
 ];
