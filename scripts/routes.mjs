@@ -40,4 +40,4 @@ export function allRoutes() {
   ];
 }
 
-export const SITE_URL = 'https://invonest.me';
+export const SITE_URL = 'https://invonest.site';

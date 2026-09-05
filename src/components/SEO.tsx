@@ -12,7 +12,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 
 /** Canonical origin. Never derive this from window.location: during
  *  prerendering the page is served from localhost. */
-export const SITE_URL = 'https://invonest.me';
+export const SITE_URL = 'https://invonest.site';
 
 interface SEOProps {
   title?: string;
