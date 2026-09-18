@@ -1,0 +1,6 @@
+# core.autocrlf=true on Windows rewrites checked-out files to CRLF. For files
+# that are served verbatim to third-party validators, that corrupts the bytes
+# they check, so pin them to LF.
+public/ads.txt   text eol=lf
+public/robots.txt text eol=lf
+public/sitemap.xml text eol=lf

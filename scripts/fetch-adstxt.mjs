@@ -40,7 +40,9 @@ async function main() {
     throw new Error(`HTTP ${response.status} from Ads.txt Manager`);
   }
 
-  const text = await response.text();
+  // Normalise to LF and strip any BOM: this file is byte-checked by Ezoic's
+  // validator, and a Windows checkout can otherwise introduce CRLF.
+  const text = (await response.text()).replace(/^﻿/, '').replace(/\r\n/g, '\n');
   if (!looksLikeAdsTxt(text)) {
     throw new Error('response did not look like an ads.txt file');
   }
