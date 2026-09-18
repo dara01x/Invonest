@@ -40,6 +40,8 @@ const BLOCKED_HOSTS = [
   'list-manage.com',
   'ezojs.com',
   'ezoic.net',
+  'ezoicanalytics.com',
+  'gatekeeperconsent.com',
 ];
 
 const MIME = {
