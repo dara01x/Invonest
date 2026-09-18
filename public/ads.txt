@@ -1,1 +1,12 @@
-google.com, pub-3508869974779106, DIRECT, f08c47fec0942fa0
+#Ads.txt invonest.site
+#Ads.txt managed by AdsTxtManager.com - the free ads.txt management tool for publishers
+ownerdomain=invonest.site
+contact=directsales@ezoic.com
+managerdomain=ezoic.ai
+
+ezoic.ai, 9556b5c4cae3095a5c45ac5ea607fcfc, DIRECT
+# 35
+google.com, pub-6644558441501035, DIRECT, f08c47fec0942fa0
+google.com, pub-1175987143200523, RESELLER, f08c47fec0942fa0
+google.com, pub-4152552776930088, DIRECT, f08c47fec0942fa0
+media.net, 8CAAT6RE8, DIRECT

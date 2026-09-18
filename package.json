@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run prerender",
+    "build": "npm run adstxt && vite build && npm run prerender",
+    "adstxt": "node scripts/fetch-adstxt.mjs",
     "prerender": "node scripts/prerender.mjs",
     "verify": "node scripts/verify-build.mjs",
     "build:dev": "vite build --mode development",

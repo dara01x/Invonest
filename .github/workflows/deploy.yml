@@ -5,6 +5,12 @@ on:
   push:
     branches: ["main"]
 
+  # Daily rebuild so Ezoic's managed ads.txt stays current. GitHub Pages cannot
+  # redirect /ads.txt to their Ads.txt Manager, so the build fetches it instead
+  # and this schedule is what keeps it from going stale.
+  schedule:
+    - cron: "17 4 * * *"
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
