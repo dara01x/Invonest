@@ -40,20 +40,22 @@ async function main() {
     throw new Error(`HTTP ${response.status} from Ads.txt Manager`);
   }
 
-  // Normalise to LF and strip any BOM: this file is byte-checked by Ezoic's
-  // validator, and a Windows checkout can otherwise introduce CRLF.
-  const text = (await response.text()).replace(/^﻿/, '').replace(/\r\n/g, '\n');
+  // Mirror the manager's bytes exactly, CRLF and all. Ezoic's validator
+  // compares our file against theirs, so any rewriting - even harmless line
+  // ending normalisation - risks being read as a mismatch.
+  const bytes = Buffer.from(await response.arrayBuffer());
+  const text = bytes.toString('utf8');
   if (!looksLikeAdsTxt(text)) {
     throw new Error('response did not look like an ads.txt file');
   }
 
-  const previous = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
-  fs.writeFileSync(target, text, 'utf8');
+  const previous = fs.existsSync(target) ? fs.readFileSync(target) : Buffer.alloc(0);
+  fs.writeFileSync(target, bytes);
 
   const lines = text.split('\n').filter((l) => l.trim() && !l.trim().startsWith('#')).length;
   console.log(
-    `ads.txt: fetched ${text.length} bytes, ${lines} entries` +
-      (text === previous ? ' (unchanged)' : ' (updated)')
+    `ads.txt: fetched ${bytes.length} bytes, ${lines} entries` +
+      (bytes.equals(previous) ? ' (unchanged)' : ' (updated)')
   );
 }
 
